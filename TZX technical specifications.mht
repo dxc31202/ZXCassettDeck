@@ -1,0 +1,3368 @@
+From: "Saved by Internet Explorer 11"
+Subject: TZX technical specifications
+Date: Wed, 30 Mar 2016 20:34:42 +0100
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----=_NextPart_000_0000_01D18AC3.96AF6D30"
+X-MimeOLE: Produced By Microsoft MimeOLE V10.0.10011.16384
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0000_01D18AC3.96AF6D30
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.worldofspectrum.org/TZXformat.html
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" =
+""><HTML><HEAD><META=20
+content=3D"IE=3D5.0000" http-equiv=3D"X-UA-Compatible">
+=20
+<META name=3D"keywords" content=3D"TZX,ZX =
+Spectrum,Speccy,Sinclair,tech,tape,format,specification">=20
+<META http-equiv=3D"Content-Type"=20
+content=3D"text/html; charset=3DISO-8859-1"><TITLE>TZX technical=20
+specifications</TITLE>
+<META name=3D"GENERATOR" content=3D"MSHTML 11.00.10586.162"></HEAD>=20
+<BODY text=3D"#000000" bgcolor=3D"#ffffff" link=3D"#0000ff" =
+alink=3D"#ff0000" vlink=3D"#800080"><BASEFONT=20
+face=3D"Verdana" size=3D"0"></BASEFONT>=20
+<CENTER id=3D"INDEX">
+<TABLE width=3D"50%" bgcolor=3D"#0040ff" border=3D"0">
+  <TBODY>
+  <TR>
+    <TD align=3D"center"><FONT color=3D"#ffff40" size=3D"+4"><STRONG>TZX =
+
+      FORMAT</STRONG></FONT></TD></TR></TBODY></TABLE><BR><BR><BR><FONT=20
+size=3D"+2"><STRONG>Format revision: v1.20 <BR><BR>19 Dec 2006 =
+</STRONG></FONT>=20
+</CENTER><BR><BR><BR>
+<DIV align=3D"center">
+<TABLE width=3D"40%">
+  <TBODY>
+  <TR>
+    <TD align=3D"left">
+      <OL>
+        <LI><B><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#INTRODUCTION">Intro=
+duction</A></B></LI>
+        <LI><B><A=20
+        =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#RULES">Rules and=20
+        definitions</A></B></LI>
+        <LI><B><A=20
+        =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#TZXFORMAT">TZX =
+file=20
+        format</A></B></LI>
+        <LI><B><A=20
+        =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#HWINFOREF">Hardware=
+=20
+        information reference</A></B></LI>
+        <LI><B><A=20
+        =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#MACHINFO">Machine=20
+        specific information</A></B></LI>
+        <LI><B><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#DEPRECATED">Depreca=
+ted=20
+        blocks</A></B></LI>
+        <LI><B><A=20
+        =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#HISTORY">Revision=20
+        =
+history</A></B></LI></OL></TD></TR></TBODY></TABLE></DIV><BR><BR><A =
+name=3D"INTRODUCTION"></A>=20
+<P>
+<TABLE width=3D"100%" bgcolor=3D"#ffffff" border=3D"0" =
+cellspacing=3D"12" cellpadding=3D"0">
+  <TBODY>
+  <TR>
+    <TD width=3D"10%" align=3D"center" bgcolor=3D"#ff7848"><FONT =
+color=3D"white" size=3D"+2"><B>
+      1. </B></FONT></TD>
+    <TD><FONT size=3D"+2">Introduction =
+</FONT></TD></TR></TBODY></TABLE><BR>
+<TABLE width=3D"100%" border=3D"0">
+  <TBODY>
+  <TR>
+    <TD width=3D"10%"></TD>
+    <TD>TZX is a file format designed to preserve all (hopefully) of the =
+tapes
+       with turbo or custom loading routines. Even though some of the =
+newer and=20
+      'smarter' emulators can find most of the info about the loader =
+from the=20
+      code itself, this isn't possible if you want to save the file to =
+tape, or=20
+      to a real Spectrum. And with all this information in the file, the =
+
+      emulators don't have to bother with finding out the timings and =
+other=20
+      things.<BR>This file format is explicitly targeted to the ZX =
+Spectrum=20
+      compatible computers only. Specialized versions of the TZX format =
+have=20
+      been defined for other machines too, e.g. the Amstrad CPC and C64, =
+but=20
+      they are now available as distinct file formats with other =
+filename
+       extensions.<BR>At the end of this document you can find a =
+description of=20
+      encoding differences between these machines and a table which =
+displays=20
+      timings used by their respective ROM loading routines (some of =
+them are=20
+      not official). If you know of any other machines that have similar =
+
+      encoding that could be represented with this file format then let =
+us=20
+      know.<BR><BR>If you're looking for TZX files, you can find an =
+extensive=20
+      collection at Martijn van der Heide's '<A =
+href=3D"http://www.worldofspectrum.org/">World=20
+      of Spectrum</A>'.<BR><BR>The format was first started off by Tomaz =
+Kac who=20
+      was maintainer until revision 1.13, and then passed to Martijn =
+v.d. Heide.
+       After that, Ramsoft were the maintainers for a brief period =
+during which=20
+      the v1.20 revision was put together. If you have any questions =
+about the=20
+      format, visit the forums at <A=20
+      href=3D"http://www.worldofspectrum.org/">World of Spectrum</A> and =
+
+      ask.<BR><BR>The default format file extension is "TZX" and =
+hopefully this=20
+      won't have to change in the future; for RISC OS, the current TAP =
+file type
+       will be used. Amstrad CPC files should use the extension "CDT" to =
+
+      distinguish them from the ZX Spectrum files, otherwise the inner =
+structure=20
+      is totally the same. </TD></TR></TBODY></TABLE><BR>
+<P align=3D"right"><FONT size=3D"+2"><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#INDEX">Return=20
+to index</A></FONT></P><BR><BR><BR><A name=3D"RULES"></A>=20
+<P>
+<TABLE width=3D"100%" bgcolor=3D"#ffffff" border=3D"0" =
+cellspacing=3D"12" cellpadding=3D"0">
+  <TBODY>
+  <TR>
+    <TD width=3D"10%" align=3D"center" bgcolor=3D"#ff7848"><FONT =
+color=3D"white" size=3D"+2"><B>
+      2. </B></FONT></TD>
+    <TD><FONT size=3D"+2">Rules and definitions =
+</FONT></TD></TR></TBODY></TABLE><BR>
+<TABLE width=3D"100%" border=3D"0">
+  <TBODY>
+  <TR>
+    <TD width=3D"10%"></TD>
+    <TD>
+      <UL>
+        <LI>Any value requiring more than one byte is stored in little =
+endian=20
+        format (i.e. LSB first).</LI>
+        <LI>All unused bits should be set to zero.</LI>
+        <LI>The timings are given in Z80 clock ticks (T states) unless =
+otherwise=20
+        stated. <B>1 T state =3D (1/3500000)s</B></LI>
+        <LI>The block IDs are given in hex.</LI>
+        <LI>All ASCII texts use the ISO 8859-1 (Latin 1) encoding; some =
+of them
+         can have several lines, which should be separated by ASCII code =
+13
+         decimal (0D hex).</LI>
+        <LI>You might interpret 'full-period' as ----____ or ____----, =
+and
+         'half-period' as ---- or ____. One 'half-period' will also be =
+referred
+         to as a 'pulse'.</LI>
+        <LI>The values in curly brackets {} are the default values that =
+are used=20
+        in the Spectrum ROM saving routines. These values are in =
+decimal.</LI>
+        <LI>If there is no pause between two data blocks then the second =
+one
+         should follow immediately; not even so much as one T state =
+between=20
+        them.</LI>
+        <LI>This document refers to 'high' and 'low' pulse levels. =
+Whether this
+         is implemented as ear=3D1 and ear=3D0 respectively or the other =
+way around
+         is not important, as long as it is done consistently.</LI>
+        <LI>Zeros and ones in 'Direct recording' blocks mean low and =
+high pulse
+         levels respectively. The 'current pulse level' after playing a =
+Direct
+         Recording block of CSW recording block is the last level =
+played.</LI>
+        <LI>The 'current pulse level' after playing the blocks ID =
+10,11,12,13,14=20
+        or 19 is the opposite of the last pulse level played, so that a=20
+        subsequent pulse will produce an edge. </LI>
+        <LI>A 'Pause' block consists of a 'low' pulse level of some =
+duration. To=20
+        ensure that the last edge produced is properly finished there =
+should be=20
+        at least 1 ms. pause of the opposite level and only after that =
+the pulse=20
+        should go to 'low'. At the end of a 'Pause' block the 'current =
+pulse=20
+        level' is low (note that the first pulse will therefore not =
+immediately=20
+        produce an edge). A 'Pause' block of zero duration is completely =
+
+        ignored, so the 'current pulse level' will NOT change in this =
+case. This=20
+        also applies to 'Data' blocks that have some pause duration =
+included in=20
+        them.</LI>
+        <LI>An emulator should put the 'current pulse level' to 'low' =
+when
+         starting to play a TZX file, either from the start or from a =
+certain
+         position. The writer of a TZX file should ensure that the =
+'current
+         pulse level' is well-defined in every sequence of blocks where =
+this is
+         important, i.e. in any sequence that includes a 'Direct =
+recording'
+         block, or that depends on edges generated by 'Pause' blocks. =
+The
+         recommended way of doing this is to include a Pause after each =
+sequence
+         of blocks.</LI>
+        <LI>When creating a 'Direct recording' block please stick to the
+         standard sampling frequencies of 22050 or 44100 Hz. This will =
+ensure
+         correct playback when using PC's soundcards.</LI>
+        <LI>The length of a block is given in the following format: =
+numbers in
+         square brackets [] mean that the value must be read from the =
+offset in
+         the brackets. Other values are normal numbers. Example: =
+[02,03]+0A
+         means: get number (a word) from offset 02 and add 0A. All =
+numbers are
+         in hex.</LI>
+        <LI>General Extension Rule: ALL custom blocks that will be added =
+after
+         version 1.10 will have the length of the block in first 4 bytes =
+(long
+         word) after the ID (this length does not include these 4 length =
+bytes).
+         This should enable programs that can only handle older versions =
+to skip
+         that block. </LI>
+        <LI>Just in case:<BR>MSB =3D most significant byte<BR>LSB =3D =
+least=20
+        significant byte<BR>MSb =3D most significant bit<BR>LSb =3D =
+least=20
+        significant bit<BR></LI></UL></TD></TR></TBODY></TABLE><BR>
+<P align=3D"right"><FONT size=3D"+2"><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#INDEX">Return=20
+to index</A></FONT></P><BR><BR><BR><A name=3D"TZXFORMAT"></A>=20
+<P>
+<TABLE width=3D"100%" bgcolor=3D"#ffffff" border=3D"0" =
+cellspacing=3D"12" cellpadding=3D"0">
+  <TBODY>
+  <TR>
+    <TD width=3D"10%" align=3D"center" bgcolor=3D"#ff7848"><FONT =
+color=3D"white" size=3D"+2"><B>
+      3. </B></FONT></TD>
+    <TD><FONT size=3D"+2">TZX file format =
+</FONT></TD></TR></TBODY></TABLE><BR>
+<TABLE width=3D"100%" border=3D"0">
+  <TBODY>
+  <TR>
+    <TD width=3D"10%"></TD>
+    <TD>
+      <TABLE width=3D"70%" align=3D"center" bgcolor=3D"#000000" =
+border=3D"0"=20
+      cellspacing=3D"1" cellpadding=3D"2">
+        <TBODY>
+        <TR bgcolor=3D"#80a0ff">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#ffffff" size=3D"+2">TZX=20
+            Header</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#fff000">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#606060" size=3D"-2">length:=20
+            </FONT><FONT color=3D"#ff6060" size=3D"-2">10=20
+bytes</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD align=3D"center"><STRONG>Offset</STRONG></TD>
+          <TD align=3D"center"><STRONG>Value</STRONG></TD>
+          <TD align=3D"center"><STRONG>Type</STRONG></TD>
+          <TD align=3D"center"><STRONG>Description</STRONG></TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x00</TD>
+          <TD align=3D"center">"ZXTape!"</TD>
+          <TD align=3D"center">ASCII[7]</TD>
+          <TD>TZX signature</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x07</TD>
+          <TD align=3D"center">0x1A</TD>
+          <TD align=3D"center">BYTE</TD>
+          <TD>End of text file marker</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x08</TD>
+          <TD align=3D"center">1</TD>
+          <TD align=3D"center">BYTE</TD>
+          <TD>TZX major revision number</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x09</TD>
+          <TD align=3D"center">20</TD>
+          <TD align=3D"center">BYTE</TD>
+          <TD>TZX minor revision =
+number</TD></TR></TBODY></TABLE><BR><BR>The file is=20
+      identified with the first 8 bytes being 'ZXTape!' plus the 'end of =
+file'=20
+      byte 26 (1A hex). This is followed by two bytes containing the =
+major and=20
+      minor version numbers.<BR><BR>To be able to use a TZX file, your =
+program=20
+      (emulator, utility, or whatever) must be able to handle files of =
+at least=20
+      its major version number. If your program can handle (say) version =
+1.05=20
+      and you encounter a file with version number 1.06, your program =
+must be=20
+      able to handle it, even if it cannot handle all the data in the=20
+      file.<BR><BR> Then the main body of the file follows. It consists =
+of a=20
+      mixture of blocks, each identified by an ID byte.<BR><A=20
+      name=3D"ID_LIST"></A> <BR><STRONG>TZX block ID list:</STRONG>=20
+      <UL>
+        <LI><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#STDSPEED">ID=20
+        10 - Standard speed data block</A></LI>
+        <LI><A=20
+        =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#TURBOSPEED">ID 11 =
+-=20
+        Turbo speed data block</A></LI>
+        <LI><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#PURETONE">ID=20
+        12 - Pure tone</A></LI>
+        <LI><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#PULSESEQ">ID=20
+        13 - Sequence of pulses of various lengths</A></LI>
+        <LI><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#PUREDATA">ID=20
+        14 - Pure data block</A></LI>
+        <LI><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#DIRECTREC">ID=20
+        15 - Direct recording block</A></LI>
+        <LI><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#CSWBLOCK">ID=20
+        18 - CSW recording block</A></LI>
+        <LI><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#GENDATA">ID=20
+        19 - Generalized data block</A></LI>
+        <LI><A=20
+        =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#PAUSEBLOCK">ID 20 =
+-=20
+        Pause (silence) or 'Stop the tape' command</A></LI>
+        <LI><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#GRPSTART">ID=20
+        21 - Group start</A></LI>
+        <LI><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#GRPEND">ID 22=20
+        - Group end</A></LI>
+        <LI><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#JUMPBLOCK">ID=20
+        23 - Jump to block</A></LI>
+        <LI><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#LOOPSTART">ID=20
+        24 - Loop start</A></LI>
+        <LI><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#LOOPEND">ID=20
+        25 - Loop end</A></LI>
+        <LI><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#CALLSEQ">ID=20
+        26 - Call sequence</A></LI>
+        <LI><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#RETURNSEQ">ID=20
+        27 - Return from sequence</A></LI>
+        <LI><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#SELBLOCK">ID=20
+        28 - Select block</A></LI>
+        <LI><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#STOP48K">ID=20
+        2A - Stop the tape if in 48K mode</A></LI>
+        <LI><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#SETLEVEL">ID=20
+        2B - Set signal level</A></LI>
+        <LI><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#TEXTDESCR">ID=20
+        30 - Text description</A></LI>
+        <LI><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#MSGBLOCK">ID=20
+        31 - Message block</A></LI>
+        <LI><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#ARCHINFO">ID=20
+        32 - Archive info</A></LI>
+        <LI><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#HARDTYPE">ID=20
+        33 - Hardware type</A></LI>
+        <LI><A=20
+        =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#CUSTOMBLOCK">ID 35 =
+-=20
+        Custom info block</A></LI>
+        <LI><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#GLUEBLOCK">ID=20
+        5A - "Glue" block (90 dec, ASCII Letter =
+'Z')</A></LI></UL><BR><BR><A name=3D"STDSPEED"></A>=20
+      <BR>
+      <TABLE width=3D"70%" align=3D"center" bgcolor=3D"#000000" =
+border=3D"0"=20
+      cellspacing=3D"1" cellpadding=3D"2">
+        <TBODY>
+        <TR bgcolor=3D"#80a0ff">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#ffffff" size=3D"+2">ID=20
+            10 - Standard Speed Data Block</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#fff000">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#606060" size=3D"-2">length:=20
+            </FONT><FONT color=3D"#ff6060"=20
+        size=3D"-2">[02,03]+04</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD width=3D"8%" align=3D"center"><STRONG>Offset</STRONG></TD>
+          <TD width=3D"8%" align=3D"center"><STRONG>Value</STRONG></TD>
+          <TD width=3D"15%" align=3D"center"><STRONG>Type</STRONG></TD>
+          <TD align=3D"center"><STRONG>Description</STRONG></TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x00</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD</TD>
+          <TD>Pause after this block (ms.) {1000}</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x02</TD>
+          <TD align=3D"center">N</TD>
+          <TD align=3D"center">WORD</TD>
+          <TD>Length of data that follow</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x04</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">BYTE[N]</TD>
+          <TD>Data as in .TAP =
+files</TD></TR></TBODY></TABLE><BR><BR>This block must=20
+      be replayed with the standard Spectrum ROM timing values - see the =
+values=20
+      in curly brackets in block ID 11. The pilot tone consists in 8063 =
+pulses=20
+      if the first data byte (flag byte) is &lt; 128, 3223 otherwise. =
+This block=20
+      can be used for the ROM loading routines AND for custom loading =
+routines=20
+      that use the same timings as ROM ones do.<BR><BR>
+      <P align=3D"right"><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#ID_LIST">Return=20
+      to ID list</A> - <A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#INDEX">Return=20
+      to index</A></P><BR><BR><A name=3D"TURBOSPEED"></A> <BR>
+      <TABLE width=3D"70%" align=3D"center" bgcolor=3D"#000000" =
+border=3D"0"=20
+      cellspacing=3D"1" cellpadding=3D"2">
+        <TBODY>
+        <TR bgcolor=3D"#80a0ff">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#ffffff" size=3D"+2">ID=20
+            11 - Turbo Speed Data Block</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#fff000">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#606060" size=3D"-2">length:=20
+            </FONT><FONT color=3D"#ff6060"=20
+          size=3D"-2">[0F,10,11]+12</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD width=3D"8%" align=3D"center"><STRONG>Offset</STRONG></TD>
+          <TD width=3D"8%" align=3D"center"><STRONG>Value</STRONG></TD>
+          <TD width=3D"15%" align=3D"center"><STRONG>Type</STRONG></TD>
+          <TD align=3D"center"><STRONG>Description</STRONG></TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x00</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD</TD>
+          <TD>Length of PILOT pulse {2168}</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x02</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD</TD>
+          <TD>Length of SYNC first pulse {667}</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x04</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD</TD>
+          <TD>Length of SYNC second pulse {735}</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x06</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD</TD>
+          <TD>Length of ZERO bit pulse {855}</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x08</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD</TD>
+          <TD>Length of ONE bit pulse {1710}</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x0A</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD</TD>
+          <TD>Length of PILOT tone (number of pulses) {8063 header=20
+            (flag&lt;128), 3223 data (flag&gt;=3D128)}</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x0C</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">BYTE</TD>
+          <TD>Used bits in the last byte (other bits should be 0) =
+{8}<BR>(e.g.=20
+            if this is 6, then the bits used (x) in the last byte are: =
+xxxxxx00,=20
+            where MSb is the leftmost bit, LSb is the rightmost =
+bit)</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x0D</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD</TD>
+          <TD>Pause after this block (ms.) {1000}</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x0F</TD>
+          <TD align=3D"center">N</TD>
+          <TD align=3D"center">BYTE[3]</TD>
+          <TD>Length of data that follow</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x12</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">BYTE[N]</TD>
+          <TD>Data as in .TAP =
+files</TD></TR></TBODY></TABLE><BR><BR>This block is=20
+      very similar to the normal TAP block but with some additional info =
+on the=20
+      timings and other important differences. The same tape encoding is =
+used as=20
+      for the standard speed data block. If a block should use some =
+non-standard=20
+      sync or pilot tones (i.e. all sorts of protection schemes) then =
+use the=20
+      next three blocks to describe it. <BR>
+      <P align=3D"right"><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#ID_LIST">Return=20
+      to ID list</A> - <A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#INDEX">Return=20
+      to index</A></P><BR><BR><A name=3D"PURETONE"></A> <BR>
+      <TABLE width=3D"70%" align=3D"center" bgcolor=3D"#000000" =
+border=3D"0"=20
+      cellspacing=3D"1" cellpadding=3D"2">
+        <TBODY>
+        <TR bgcolor=3D"#80a0ff">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#ffffff" size=3D"+2">ID=20
+            12 - Pure Tone</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#fff000">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#606060" size=3D"-2">length:=20
+            </FONT><FONT color=3D"#ff6060" =
+size=3D"-2">04</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD width=3D"8%" align=3D"center"><STRONG>Offset</STRONG></TD>
+          <TD width=3D"8%" align=3D"center"><STRONG>Value</STRONG></TD>
+          <TD width=3D"15%" align=3D"center"><STRONG>Type</STRONG></TD>
+          <TD align=3D"center"><STRONG>Description</STRONG></TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x00</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD</TD>
+          <TD>Length of one pulse in T-states</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x02</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD</TD>
+          <TD>Number of pulses</TD></TR></TBODY></TABLE><BR><BR>This =
+will produce a=20
+      tone which is basically the same as the pilot tone in the ID 10, =
+ID 11=20
+      blocks. You can define how long the pulse is and how many pulses =
+are in=20
+      the tone. <BR>
+      <P align=3D"right"><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#ID_LIST">Return=20
+      to ID list</A> - <A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#INDEX">Return=20
+      to index</A></P><BR><BR><A name=3D"PULSESEQ"></A> <BR>
+      <TABLE width=3D"70%" align=3D"center" bgcolor=3D"#000000" =
+border=3D"0"=20
+      cellspacing=3D"1" cellpadding=3D"2">
+        <TBODY>
+        <TR bgcolor=3D"#80a0ff">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#ffffff" size=3D"+2">ID=20
+            13 - Pulse sequence</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#fff000">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#606060" size=3D"-2">length:=20
+            </FONT><FONT color=3D"#ff6060"=20
+        size=3D"-2">[00]*02+01</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD width=3D"8%" align=3D"center"><STRONG>Offset</STRONG></TD>
+          <TD width=3D"8%" align=3D"center"><STRONG>Value</STRONG></TD>
+          <TD width=3D"15%" align=3D"center"><STRONG>Type</STRONG></TD>
+          <TD align=3D"center"><STRONG>Description</STRONG></TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x00</TD>
+          <TD align=3D"center">N</TD>
+          <TD align=3D"center">BYTE</TD>
+          <TD>Number of pulses</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x01</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD[N]</TD>
+          <TD>Pulses' lengths</TD></TR></TBODY></TABLE><BR><BR>This will =
+produce N=20
+      pulses, each having its own timing. Up to 255 pulses can be stored =
+in this=20
+      block; this is useful for non-standard sync tones used by some =
+protection=20
+      schemes.<BR><BR>
+      <P align=3D"right"><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#ID_LIST">Return=20
+      to ID list</A> - <A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#INDEX">Return=20
+      to index</A></P><BR><BR><A name=3D"PUREDATA"></A> <BR>
+      <TABLE width=3D"70%" align=3D"center" bgcolor=3D"#000000" =
+border=3D"0"=20
+      cellspacing=3D"1" cellpadding=3D"2">
+        <TBODY>
+        <TR bgcolor=3D"#80a0ff">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#ffffff" size=3D"+2">ID=20
+            14 - Pure Data Block</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#fff000">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#606060" size=3D"-2">length:=20
+            </FONT><FONT color=3D"#ff6060"=20
+          size=3D"-2">[07,08,09]+0A</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD width=3D"8%" align=3D"center"><STRONG>Offset</STRONG></TD>
+          <TD width=3D"8%" align=3D"center"><STRONG>Value</STRONG></TD>
+          <TD width=3D"15%" align=3D"center"><STRONG>Type</STRONG></TD>
+          <TD align=3D"center"><STRONG>Description</STRONG></TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x00</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD</TD>
+          <TD>Length of ZERO bit pulse</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x02</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD</TD>
+          <TD>Length of ONE bit pulse</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x04</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">BYTE</TD>
+          <TD>Used bits in last byte (other bits should be 0)<BR>(e.g. =
+if this=20
+            is 6, then the bits used (x) in the last byte are: xxxxxx00, =
+where=20
+            MSb is the leftmost bit, LSb is the rightmost bit)</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x05</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD</TD>
+          <TD>Pause after this block (ms.)</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x07</TD>
+          <TD align=3D"center">N</TD>
+          <TD align=3D"center">BYTE[3]</TD>
+          <TD>Length of data that follow</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x0A</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">BYTE[N]</TD>
+          <TD>Data as in .TAP =
+files</TD></TR></TBODY></TABLE><BR><BR>This is the=20
+      same as in the turbo loading data block, except that it has no =
+pilot or=20
+      sync pulses.<BR><BR>
+      <P align=3D"right"><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#ID_LIST">Return=20
+      to ID list</A> - <A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#INDEX">Return=20
+      to index</A></P><BR><BR><A name=3D"DIRECTREC"></A> <BR>
+      <TABLE width=3D"70%" align=3D"center" bgcolor=3D"#000000" =
+border=3D"0"=20
+      cellspacing=3D"1" cellpadding=3D"2">
+        <TBODY>
+        <TR bgcolor=3D"#80a0ff">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#ffffff" size=3D"+2">ID=20
+            15 - Direct Recording</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#fff000">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#606060" size=3D"-2">length:=20
+            </FONT><FONT color=3D"#ff6060"=20
+          size=3D"-2">[05,06,07]+08</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD width=3D"8%" align=3D"center"><STRONG>Offset</STRONG></TD>
+          <TD width=3D"8%" align=3D"center"><STRONG>Value</STRONG></TD>
+          <TD width=3D"15%" align=3D"center"><STRONG>Type</STRONG></TD>
+          <TD align=3D"center"><STRONG>Description</STRONG></TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x00</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD</TD>
+          <TD>Number of T-states per sample (bit of data)</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x02</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD</TD>
+          <TD>Pause after this block in milliseconds (ms.)</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x04</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">BYTE</TD>
+          <TD>Used bits (samples) in last byte of data (1-8)<BR>(e.g. if =
+this=20
+            is 2, only first two samples of the last byte will be =
+played) </TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x05</TD>
+          <TD align=3D"center">N</TD>
+          <TD align=3D"center">BYTE[3]</TD>
+          <TD>Length of samples' data</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x08</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">BYTE[N]</TD>
+          <TD>Samples data. Each bit represents a state on the EAR port =
+(i.e.=20
+            one sample).<BR>MSb is played =
+first.</TD></TR></TBODY></TABLE><BR><BR>This=20
+      block is used for tapes which have some parts in a format such =
+that the=20
+      turbo loader block cannot be used. This is not like a VOC file, =
+since the=20
+      information is much more compact. Each sample value is represented =
+by one=20
+      bit only (0 for low, 1 for high) which means that the block will =
+be at=20
+      most 1/8 the size of the equivalent VOC.<BR>The preferred sampling =
+
+      frequencies are 22050 or 44100 Hz (158 or 79 T-states/sample). =
+Please, if=20
+      you can, don't use other sampling frequencies.<BR><BR>Please use =
+this=20
+      block only if you cannot use any other block.<BR><BR>
+      <P align=3D"right"><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#ID_LIST">Return=20
+      to ID list</A> - <A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#INDEX">Return=20
+      to index</A></P><BR><BR><A name=3D"CSWBLOCK"></A> <BR>
+      <TABLE width=3D"70%" align=3D"center" bgcolor=3D"#000000" =
+border=3D"0"=20
+      cellspacing=3D"1" cellpadding=3D"2">
+        <TBODY>
+        <TR bgcolor=3D"#80a0ff">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#ffffff" size=3D"+2">ID=20
+            18 - CSW Recording</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#fff000">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#606060" size=3D"-2">length:=20
+            </FONT><FONT color=3D"#ff6060"=20
+            size=3D"-2">[00,01,02,03]+04</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD width=3D"8%" align=3D"center"><STRONG>Offset</STRONG></TD>
+          <TD width=3D"8%" align=3D"center"><STRONG>Value</STRONG></TD>
+          <TD width=3D"15%" align=3D"center"><STRONG>Type</STRONG></TD>
+          <TD align=3D"center"><STRONG>Description</STRONG></TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x00</TD>
+          <TD align=3D"center">10+N</TD>
+          <TD align=3D"center">DWORD</TD>
+          <TD>Block length (without these four bytes)</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x04</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD</TD>
+          <TD>Pause after this block (in ms).</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x06</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">BYTE[3]</TD>
+          <TD>Sampling rate</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x09</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">BYTE</TD>
+          <TD>Compression type<BR><FONT size=3D"1">0x01: RLE<BR>0x02:=20
+            Z-RLE</FONT> </TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x0A</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">DWORD</TD>
+          <TD>Number of stored pulses (after decompression, for =
+validation=20
+            purposes) </TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x0E</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">BYTE[N]</TD>
+          <TD>CSW data, encoded according to the CSW file format=20
+          specification.</TD></TR></TBODY></TABLE><BR><BR>This block =
+contains a=20
+      sequence of raw pulses encoded in CSW format v2 (Compressed Square =
+
+      Wave).<BR><BR>
+      <P align=3D"right"><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#ID_LIST">Return=20
+      to ID list</A> - <A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#INDEX">Return=20
+      to index</A></P><BR><BR><A name=3D"GENDATA"></A> <BR>
+      <TABLE width=3D"70%" align=3D"center" bgcolor=3D"#000000" =
+border=3D"0"=20
+      cellspacing=3D"1" cellpadding=3D"2">
+        <TBODY>
+        <TR bgcolor=3D"#80a0ff">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#ffffff" size=3D"+2">ID=20
+            19 - Generalized Data Block</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#fff000">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#606060" size=3D"-2">length:=20
+            </FONT><FONT color=3D"#ff6060"=20
+            size=3D"-2">[00,01,02,03]+04</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD width=3D"8%" align=3D"center"><STRONG>Offset</STRONG></TD>
+          <TD width=3D"8%" align=3D"center"><STRONG>Value</STRONG></TD>
+          <TD width=3D"15%" align=3D"center"><STRONG>Type</STRONG></TD>
+          <TD align=3D"center"><STRONG>Description</STRONG></TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x00</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">DWORD</TD>
+          <TD>Block length (without these four bytes)</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x04</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD</TD>
+          <TD>Pause after this block (ms)</TD></TR>
+        <TR bgcolor=3D"#b0e0f0">
+          <TD align=3D"center">0x06</TD>
+          <TD align=3D"center">TOTP</TD>
+          <TD align=3D"center">DWORD</TD>
+          <TD>Total number of symbols in pilot/sync block (can be =
+0)</TD></TR>
+        <TR bgcolor=3D"#b0e0f0">
+          <TD align=3D"center">0x0A</TD>
+          <TD align=3D"center">NPP</TD>
+          <TD align=3D"center">BYTE</TD>
+          <TD>Maximum number of pulses per pilot/sync =
+symbol<BR></TD></TR>
+        <TR bgcolor=3D"#b0e0f0">
+          <TD align=3D"center">0x0B</TD>
+          <TD align=3D"center">ASP</TD>
+          <TD align=3D"center">BYTE</TD>
+          <TD>Number of pilot/sync symbols in the alphabet table=20
+        (0=3D256)<BR></TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x0C</TD>
+          <TD align=3D"center">TOTD</TD>
+          <TD align=3D"center">DWORD</TD>
+          <TD>Total number of symbols in data stream (can be =
+0)</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x10</TD>
+          <TD align=3D"center">NPD</TD>
+          <TD align=3D"center">BYTE</TD>
+          <TD>Maximum number of pulses per data symbol<BR></TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x11</TD>
+          <TD align=3D"center">ASD</TD>
+          <TD align=3D"center">BYTE</TD>
+          <TD>Number of data symbols in the alphabet table =
+(0=3D256)<BR></TD></TR>
+        <TR bgcolor=3D"#b0e0f0">
+          <TD align=3D"center">0x12</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">SYMDEF[ASP]</TD>
+          <TD>Pilot and sync symbols definition table<BR><FONT =
+size=3D"1">This=20
+            field is present only if TOTP&gt;0</FONT> </TD></TR>
+        <TR bgcolor=3D"#b0e0f0">
+          <TD align=3D"center">0x12+<BR>(2*NPP+1)*ASP</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">PRLE[TOTP]</TD>
+          <TD>Pilot and sync data stream<BR><FONT size=3D"1">This field =
+is=20
+            present only if TOTP&gt;0</FONT> </TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD=20
+align=3D"center">0x12+<BR>(TOTP&gt;0)*((2*NPP+1)*ASP)+<BR>TOTP*3</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">SYMDEF[ASD]</TD>
+          <TD>Data symbols definition table<BR><FONT size=3D"1">This =
+field is=20
+            present only if TOTD&gt;0</FONT> </TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD=20
+            =
+align=3D"center">0x12+<BR>(TOTP&gt;0)*((2*NPP+1)*ASP)+<BR>TOTP*3+<BR>(2*N=
+PD+1)*ASD</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">BYTE[DS]</TD>
+          <TD>Data stream<BR><FONT size=3D"1">This field is present only =
+if=20
+            TOTD&gt;0</FONT></TD></TR></TBODY></TABLE><BR><BR>This block =
+has been=20
+      specifically developed to represent an extremely wide range of =
+data=20
+      encoding techniques.<BR>The basic idea is that each loading =
+component=20
+      (pilot tone, sync pulses, data) is associated to a specific =
+sequence of=20
+      pulses, where each sequence (wave) can contain a different number =
+of=20
+      pulses from the others. In this way we can have a situation where =
+bit 0 is
+       represented with 4 pulses and bit 1 with 8 pulses.<BR><BR>
+      <TABLE width=3D"70%" align=3D"center" bgcolor=3D"#000000" =
+border=3D"0"=20
+      cellspacing=3D"1" cellpadding=3D"2">
+        <TBODY>
+        <TR bgcolor=3D"#80a0ff">
+          <TD colspan=3D"4"><FONT color=3D"#ffffff" =
+size=3D"+2"><STRONG>SYMDEF=20
+            structure format</STRONG></FONT></TD></TR>
+        <TR bgcolor=3D"#ffc0c0">
+          <TD width=3D"8%" align=3D"center"><STRONG>Offset</STRONG></TD>
+          <TD width=3D"8%" align=3D"center"><STRONG>Value</STRONG></TD>
+          <TD width=3D"15%" align=3D"center"><STRONG>Type</STRONG></TD>
+          <TD align=3D"center"><STRONG>Description</STRONG></TD></TR>
+        <TR bgcolor=3D"#c0ffc0">
+          <TD align=3D"center">0x00</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">BYTE</TD>
+          <TD>Symbol flags<BR><FONT size=3D"1">b0-b1: starting symbol=20
+            polarity<BR>&nbsp;&nbsp;&nbsp;&nbsp; 00: opposite to the =
+current=20
+            level (make an edge, as usual) - =
+default<BR>&nbsp;&nbsp;&nbsp;&nbsp;=20
+            01: same as the current level (no edge - prolongs the =
+previous=20
+            pulse)<BR>&nbsp;&nbsp;&nbsp;&nbsp; 10: force low level<BR>
+            &nbsp;&nbsp;&nbsp;&nbsp; 11: force high =
+level<BR></FONT></TD></TR>
+        <TR bgcolor=3D"#c0ffc0">
+          <TD align=3D"center">0x01</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD[MAXP]</TD>
+          <TD>Array of pulse lengths.</TD></TR></TBODY></TABLE><BR>The =
+alphabet is=20
+      stored using a table where each symbol is a row of pulses. The =
+number of=20
+      columns (i.e. pulses) of the table is the length of the longest =
+sequence=20
+      amongst all (MAXP=3DNPP or NPD, for pilot/sync or data blocks =
+respectively);=20
+      shorter waves are terminated by a zero-length pulse in the=20
+      sequence.<BR><BR>Any number of data symbols is allowed, so we can =
+have=20
+      more than two distinct waves; for example, imagine a loader which =
+writes=20
+      two bits at a time by encoding them with four distinct pulse =
+lengths: this=20
+      loader would have an alphabet of four symbols, each associated to =
+a=20
+      specific sequence of pulses (wave).<BR><BR>
+      <TABLE width=3D"70%" align=3D"center" bgcolor=3D"#000000" =
+border=3D"0"=20
+      cellspacing=3D"1" cellpadding=3D"2">
+        <TBODY>
+        <TR bgcolor=3D"#80a0ff">
+          <TD colspan=3D"4"><FONT color=3D"#ffffff" =
+size=3D"+2"><STRONG>PRLE=20
+            structure format</STRONG></FONT></TD></TR>
+        <TR bgcolor=3D"#ffc0c0">
+          <TD width=3D"8%" align=3D"center"><STRONG>Offset</STRONG></TD>
+          <TD width=3D"8%" align=3D"center"><STRONG>Value</STRONG></TD>
+          <TD width=3D"15%" align=3D"center"><STRONG>Type</STRONG></TD>
+          <TD align=3D"center"><STRONG>Description</STRONG></TD></TR>
+        <TR bgcolor=3D"#c0ffc0">
+          <TD align=3D"center">0x00</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">BYTE</TD>
+          <TD>Symbol to be represented</TD></TR>
+        <TR bgcolor=3D"#c0ffc0">
+          <TD align=3D"center">0x01</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD</TD>
+          <TD>Number of repetitions</TD></TR></TBODY></TABLE><BR>Most =
+commonly,=20
+      pilot and sync are repetitions of the same pulse, thus they are=20
+      represented using a very simple RLE encoding structure which =
+stores the=20
+      symbol and the number of times it must be repeated.<BR><BR>Each =
+symbol in=20
+      the data stream is represented by a string of NB bits of the block =
+data,=20
+      where NB =3D ceiling(Log2(ASD)). Thus the length of the whole data =
+stream in=20
+      bits is NB*TOTD, or in bytes DS=3Dceil(NB*TOTD/8).=20
+      <BR><BR><BR><STRONG>Example</STRONG><BR><BR>A typical Spectrum's =
+standard=20
+      loading header can be represented like this:<BR><BR>
+      <TABLE width=3D"70%" align=3D"center" bgcolor=3D"#000000" =
+border=3D"0"=20
+      cellspacing=3D"1" cellpadding=3D"2">
+        <TBODY>
+        <TR bgcolor=3D"#c0a0ff">
+          <TD width=3D"8%" align=3D"center"><STRONG>Offset</STRONG></TD>
+          <TD width=3D"30%" align=3D"center"><STRONG>Value</STRONG></TD>
+          <TD align=3D"center"><STRONG>Description</STRONG></TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD align=3D"center">0x00</TD>
+          <TD align=3D"center">59 (0x3B)</TD>
+          <TD>Total block length</TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD align=3D"center">0x04</TD>
+          <TD align=3D"center">1000 (0x03E8)</TD>
+          <TD>Pause after this block (ms.)</TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD align=3D"center">0x06</TD>
+          <TD align=3D"center">2</TD>
+          <TD>Total number of symbols in pilot/sync block</TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD align=3D"center">0x0A</TD>
+          <TD align=3D"center">2</TD>
+          <TD>Max pulses per symbol</TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD align=3D"center">0x0B</TD>
+          <TD align=3D"center">2</TD>
+          <TD>Number of symbols in pilot/sync alphabet</TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD align=3D"center">0x0C</TD>
+          <TD align=3D"center">152 (0x98)</TD>
+          <TD>Total number of symbols (bits, in this case) in data=20
+stream</TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD align=3D"center">0x10</TD>
+          <TD align=3D"center">2</TD>
+          <TD>Max pulses per data symbol</TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD align=3D"center">0x11</TD>
+          <TD align=3D"center">2</TD>
+          <TD>Number of symbols in data alphabet</TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD align=3D"center">0x12</TD>
+          <TD align=3D"center">SYMDEF[0]: ( 0, 2168, 0 )<BR>SYMDEF[1]: ( =
+0, 667,=20
+            735) </TD>
+          <TD>Pilot/sync symbol definitions</TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD align=3D"center">0x1C</TD>
+          <TD align=3D"center">PRLE[0]: ( 0, 8063 )<BR>PRLE[1]: ( 1, 1) =
+</TD>
+          <TD>Pilot/sync data block</TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD align=3D"center">0x22</TD>
+          <TD align=3D"center">SYMDEF[0]: ( 0, 855, 855 )<BR>SYMDEF[1]: =
+( 0,=20
+            1710, 1710) </TD>
+          <TD>Data symbol definitions</TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD align=3D"center">0x2C</TD>
+          <TD align=3D"center">00000000 - 0x00<BR>00000011 - =
+0x03<BR>01001010 -=20
+            0x4A<BR>01010000 - 0x50<BR>01010011 - 0x53<BR>01010000 - =
+0x50<BR>
+            00100000 - 0x20<BR>00100000 - 0x20<BR>00100000 - =
+0x20<BR>00100000 -=20
+            0x20<BR>00100000 - 0x20<BR>00100000 - 0x20<BR>00000000 - =
+0x00<BR>
+            00011011 - 0x1B<BR>00000000 - 0x00<BR>01000000 - =
+0x40<BR>00000000 -=20
+            0x00<BR>10000000 - 0x80<BR>11000001 - 0xC1 </TD>
+          <TD>Data stream:<BR><BR>&nbsp;&nbsp;&nbsp; 00: loading flag =
+(0x00 =3D=20
+            header)<BR>&nbsp;&nbsp;&nbsp; 03: data type (0x03 =3D =
+"Bytes:")<BR>
+            &nbsp;&nbsp;&nbsp; 4A,50,53,50,20,20,20,20,20,20: file name=20
+            ("JPSP")<BR>&nbsp;&nbsp;&nbsp; 1B00: data length<BR>
+            &nbsp;&nbsp;&nbsp; 4000: start address<BR>&nbsp;&nbsp;&nbsp; =
+8000:=20
+            autostart (no meaning here)<BR>&nbsp;&nbsp;&nbsp; C1:=20
+        checksum<BR></TD></TR></TBODY></TABLE><BR><BR>The very same data =
+
+      information encoded to work with the ZX81 would look like =
+this:<BR><BR>
+      <TABLE width=3D"70%" align=3D"center" bgcolor=3D"#000000" =
+border=3D"0"=20
+      cellspacing=3D"1" cellpadding=3D"2">
+        <TBODY>
+        <TR bgcolor=3D"#c0a0ff">
+          <TD width=3D"8%" align=3D"center"><STRONG>Offset</STRONG></TD>
+          <TD width=3D"42%" align=3D"center"><STRONG>Value</STRONG></TD>
+          <TD align=3D"center"><STRONG>Description</STRONG></TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD align=3D"center">0x00</TD>
+          <TD align=3D"center">107 (0x6B)</TD>
+          <TD>Total block length</TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD align=3D"center">0x04</TD>
+          <TD align=3D"center">1000 (0x03E8)</TD>
+          <TD>Pause after this block (ms.)</TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD align=3D"center">0x06</TD>
+          <TD align=3D"center">0</TD>
+          <TD>Total number of records in pilot/sync block</TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD align=3D"center">0x0A</TD>
+          <TD align=3D"center">0</TD>
+          <TD>Max pulses per symbol</TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD align=3D"center">0x0B</TD>
+          <TD align=3D"center">0</TD>
+          <TD>Number of symbols in pilot/sync alphabet</TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD align=3D"center">0x0C</TD>
+          <TD align=3D"center">152 (0x98)</TD>
+          <TD>Total number of records in data stream</TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD align=3D"center">0x10</TD>
+          <TD align=3D"center">18 (0x12)</TD>
+          <TD>Max pulses per data symbol</TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD align=3D"center">0x11</TD>
+          <TD align=3D"center">2</TD>
+          <TD>Number of symbols in data alphabet</TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD align=3D"center">0x12</TD>
+          <TD align=3D"center">SYMDEF[0]:<BR>( 3, 530, 520, 530, 520, =
+530, 520,=20
+            530, 4689, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )<BR>SYMDEF[1]:<BR>( =
+3, 530,=20
+            520, 530, 520, 530, 520, 530, 520, 530, 520, 530, 520, 530, =
+520,=20
+            530, 520, 530, 4689 ) </TD>
+          <TD>Data symbol definitions<BR><FONT size=3D"1">(referred to =
+3.5MHz=20
+            clock frequency)</FONT></TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD align=3D"center">0x5C</TD>
+          <TD align=3D"center">00000000 - 0x00<BR>00000011 - =
+0x03<BR>01001010 -=20
+            0x4A<BR>01010000 - 0x50<BR>01010011 - 0x53<BR>01010000 - =
+0x50<BR>
+            00100000 - 0x20<BR>00100000 - 0x20<BR>00100000 - =
+0x20<BR>00100000 -=20
+            0x20<BR>00100000 - 0x20<BR>00100000 - 0x20<BR>00000000 - =
+0x00<BR>
+            00011011 - 0x1B<BR>00000000 - 0x00<BR>01000000 - =
+0x40<BR>00000000 -=20
+            0x00<BR>10000000 - 0x80<BR>11000001 - 0xC1 </TD>
+          <TD>Data stream</TD></TR></TBODY></TABLE><BR><BR><BR>
+      <P align=3D"right"><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#ID_LIST">Return=20
+      to ID list</A> - <A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#INDEX">Return=20
+      to index</A></P><BR><BR><A name=3D"PAUSEBLOCK"></A> <BR>
+      <TABLE width=3D"70%" align=3D"center" bgcolor=3D"#000000" =
+border=3D"0"=20
+      cellspacing=3D"1" cellpadding=3D"2">
+        <TBODY>
+        <TR bgcolor=3D"#80a0ff">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#ffffff" size=3D"+2">ID=20
+            20 - Pause (silence) or 'Stop the Tape'=20
+command</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#fff000">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#606060" size=3D"-2">length:=20
+            </FONT><FONT color=3D"#ff6060" =
+size=3D"-2">02</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD width=3D"8%" align=3D"center"><STRONG>Offset</STRONG></TD>
+          <TD width=3D"8%" align=3D"center"><STRONG>Value</STRONG></TD>
+          <TD width=3D"15%" align=3D"center"><STRONG>Type</STRONG></TD>
+          <TD align=3D"center"><STRONG>Description</STRONG></TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x00</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD</TD>
+          <TD>Pause duration (ms.)</TD></TR></TBODY></TABLE><BR><BR>This =
+will make a=20
+      silence (low amplitude level (0)) for a given time in =
+milliseconds. If the=20
+      value is 0 then the emulator or utility should (in effect) STOP =
+THE TAPE,=20
+      i.e. should not continue loading until the user or emulator =
+requests=20
+      it.<BR><BR>
+      <P align=3D"right"><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#ID_LIST">Return=20
+      to ID list</A> - <A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#INDEX">Return=20
+      to index</A></P><BR><BR><A name=3D"GRPSTART"></A> <BR>
+      <TABLE width=3D"70%" align=3D"center" bgcolor=3D"#000000" =
+border=3D"0"=20
+      cellspacing=3D"1" cellpadding=3D"2">
+        <TBODY>
+        <TR bgcolor=3D"#80a0ff">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#ffffff" size=3D"+2">ID=20
+            21 - Group start</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#fff000">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#606060" size=3D"-2">length:=20
+            </FONT><FONT color=3D"#ff6060" =
+size=3D"-2">[00]+01</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD width=3D"8%" align=3D"center"><STRONG>Offset</STRONG></TD>
+          <TD width=3D"8%" align=3D"center"><STRONG>Value</STRONG></TD>
+          <TD width=3D"15%" align=3D"center"><STRONG>Type</STRONG></TD>
+          <TD align=3D"center"><STRONG>Description</STRONG></TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x00</TD>
+          <TD align=3D"center">L</TD>
+          <TD align=3D"center">BYTE</TD>
+          <TD>Length of the group name string</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x01</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">CHAR[L]</TD>
+          <TD>Group name in ASCII format (please keep it under 30 =
+characters=20
+            long)</TD></TR></TBODY></TABLE><BR><BR>This block marks the =
+start of a=20
+      group of blocks which are to be treated as one single (composite) =
+block.=20
+      This is very handy for tapes that use lots of subblocks like =
+Bleepload=20
+      (which may well have over 160 custom loading blocks). You can also =
+give=20
+      the group a name (example 'Bleepload Block 1').<BR><BR>For each =
+group=20
+      start block, there must be a group end block. Nesting of groups is =
+not=20
+      allowed.<BR><BR>
+      <P align=3D"right"><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#ID_LIST">Return=20
+      to ID list</A> - <A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#INDEX">Return=20
+      to index</A></P><BR><BR><A name=3D"GRPEND"></A> <BR>
+      <TABLE width=3D"70%" align=3D"center" bgcolor=3D"#000000" =
+border=3D"0"=20
+      cellspacing=3D"1" cellpadding=3D"2">
+        <TBODY>
+        <TR bgcolor=3D"#80a0ff">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#ffffff" size=3D"+2">ID=20
+            22 - Group end</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#fff000">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#606060" size=3D"-2">length:=20
+            </FONT><FONT color=3D"#ff6060"=20
+        =
+size=3D"-2">00</FONT></STRONG></TD></TR></TBODY></TABLE><BR><BR>This=20
+      indicates the end of a group. This block has no body.<BR><BR>
+      <P align=3D"right"><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#ID_LIST">Return=20
+      to ID list</A> - <A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#INDEX">Return=20
+      to index</A></P><BR><BR><A name=3D"JUMPBLOCK"></A> <BR>
+      <TABLE width=3D"70%" align=3D"center" bgcolor=3D"#000000" =
+border=3D"0"=20
+      cellspacing=3D"1" cellpadding=3D"2">
+        <TBODY>
+        <TR bgcolor=3D"#80a0ff">
+          <TD align=3D"center" colspan=3D"4"><FONT color=3D"#ffffff"=20
+            size=3D"+2"><STRONG>ID 23 - Jump to =
+block</STRONG></FONT></TD></TR>
+        <TR bgcolor=3D"#fff000">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#606060" size=3D"-2">length:=20
+            </FONT><FONT color=3D"#ff6060" =
+size=3D"-2">02</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD width=3D"8%" align=3D"center"><STRONG>Offset</STRONG></TD>
+          <TD width=3D"8%" align=3D"center"><STRONG>Value</STRONG></TD>
+          <TD width=3D"15%" align=3D"center"><STRONG>Type</STRONG></TD>
+          <TD align=3D"center"><STRONG>Description</STRONG></TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x00</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD</TD>
+          <TD>Relative jump value</TD></TR></TBODY></TABLE><BR><BR>This =
+block will=20
+      enable you to jump from one block to another within the file. The =
+value is=20
+      a signed short word (usually 'signed short' in C); Some examples:=20
+      <UL>
+        <LI>Jump 0 =3D 'Loop Forever' - this should never happen</LI>
+        <LI>Jump 1 =3D 'Go to the next block' - it is like NOP in =
+assembler=20
+;)</LI>
+        <LI>Jump 2 =3D 'Skip one block'</LI>
+        <LI>Jump -1 =3D 'Go to the previous block'</LI></UL>All blocks =
+are included=20
+      in the block count!<BR><BR>
+      <P align=3D"right"><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#ID_LIST">Return=20
+      to ID list</A> - <A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#INDEX">Return=20
+      to index</A></P><BR><BR><A name=3D"LOOPSTART"></A> <BR>
+      <TABLE width=3D"70%" align=3D"center" bgcolor=3D"#000000" =
+border=3D"0"=20
+      cellspacing=3D"1" cellpadding=3D"2">
+        <TBODY>
+        <TR bgcolor=3D"#80a0ff">
+          <TD align=3D"center" colspan=3D"4"><FONT color=3D"#ffffff"=20
+            size=3D"+2"><STRONG>ID 24 - Loop =
+start</STRONG></FONT></TD></TR>
+        <TR bgcolor=3D"#fff000">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#606060" size=3D"-2">length:=20
+            </FONT><FONT color=3D"#ff6060" =
+size=3D"-2">02</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD width=3D"8%" align=3D"center"><STRONG>Offset</STRONG></TD>
+          <TD width=3D"8%" align=3D"center"><STRONG>Value</STRONG></TD>
+          <TD width=3D"15%" align=3D"center"><STRONG>Type</STRONG></TD>
+          <TD align=3D"center"><STRONG>Description</STRONG></TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x00</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD</TD>
+          <TD>Number of repetitions (greater than=20
+      1)</TD></TR></TBODY></TABLE><BR><BR>If you have a sequence of =
+identical=20
+      blocks, or of identical groups of blocks, you can use this block =
+to tell=20
+      how many times they should be repeated. This block is the same as =
+the FOR=20
+      statement in BASIC.<BR><BR>For simplicity reasons don't nest loop=20
+      blocks!<BR><BR>
+      <P align=3D"right"><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#ID_LIST">Return=20
+      to ID list</A> - <A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#INDEX">Return=20
+      to index</A></P><BR><BR><A name=3D"LOOPEND"></A> <BR>
+      <TABLE width=3D"70%" align=3D"center" bgcolor=3D"#000000" =
+border=3D"0"=20
+      cellspacing=3D"1" cellpadding=3D"2">
+        <TBODY>
+        <TR bgcolor=3D"#80a0ff">
+          <TD align=3D"center" colspan=3D"4"><FONT color=3D"#ffffff"=20
+            size=3D"+2"><STRONG>ID 25 - Loop =
+end</STRONG></FONT></TD></TR>
+        <TR bgcolor=3D"#fff000">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#606060" size=3D"-2">length:=20
+            </FONT><FONT color=3D"#ff6060"=20
+        =
+size=3D"-2">00</FONT></STRONG></TD></TR></TBODY></TABLE><BR><BR>This is =
+the=20
+      same as BASIC's NEXT statement. It means that the utility should =
+jump back=20
+      to the start of the loop if it hasn't been run for the specified =
+number of=20
+      times.<BR><BR>This block has no body.<BR><BR>
+      <P align=3D"right"><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#ID_LIST">Return=20
+      to ID list</A> - <A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#INDEX">Return=20
+      to index</A></P><BR><BR><A name=3D"CALLSEQ"></A> <BR>
+      <TABLE width=3D"70%" align=3D"center" bgcolor=3D"#000000" =
+border=3D"0"=20
+      cellspacing=3D"1" cellpadding=3D"2">
+        <TBODY>
+        <TR bgcolor=3D"#80a0ff">
+          <TD align=3D"center" colspan=3D"4"><FONT color=3D"#ffffff"=20
+            size=3D"+2"><STRONG>ID 26 - Call =
+sequence</STRONG></FONT></TD></TR>
+        <TR bgcolor=3D"#fff000">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#606060" size=3D"-2">length:=20
+            </FONT><FONT color=3D"#ff6060"=20
+          size=3D"-2">[00,01]*02+02</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD width=3D"8%" align=3D"center"><STRONG>Offset</STRONG></TD>
+          <TD width=3D"8%" align=3D"center"><STRONG>Value</STRONG></TD>
+          <TD width=3D"15%" align=3D"center"><STRONG>Type</STRONG></TD>
+          <TD align=3D"center"><STRONG>Description</STRONG></TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x00</TD>
+          <TD align=3D"center">N</TD>
+          <TD align=3D"center">WORD</TD>
+          <TD>Number of calls to be made</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x02</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD[N]</TD>
+          <TD>Array of call block numbers (relative-signed=20
+        offsets)</TD></TR></TBODY></TABLE><BR><BR>This block is an =
+analogue of the=20
+      CALL Subroutine statement. It basically executes a sequence of =
+blocks that=20
+      are somewhere else and then goes back to the next block. Because =
+more than=20
+      one call can be normally used you can include a list of sequences =
+to be=20
+      called. The 'nesting' of call blocks is also not allowed for the=20
+      simplicity reasons. You can, of course, use the CALL blocks in the =
+LOOP=20
+      sequences and vice versa. The value is relative for the obvious =
+reasons -=20
+      so that you can add some blocks in the beginning of the file =
+without=20
+      disturbing the call values. Please take a look at 'Jump To Block' =
+for=20
+      reference on the values.<BR><BR>
+      <P align=3D"right"><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#ID_LIST">Return=20
+      to ID list</A> - <A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#INDEX">Return=20
+      to index</A></P><BR><BR><A name=3D"RETURNSEQ"></A> <BR>
+      <TABLE width=3D"70%" align=3D"center" bgcolor=3D"#000000" =
+border=3D"0"=20
+      cellspacing=3D"1" cellpadding=3D"2">
+        <TBODY>
+        <TR bgcolor=3D"#80a0ff">
+          <TD align=3D"center" colspan=3D"4"><FONT color=3D"#ffffff"=20
+            size=3D"+2"><STRONG>ID 27 - Return from =
+sequence</STRONG></FONT></TD></TR>
+        <TR bgcolor=3D"#fff000">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#606060" size=3D"-2">length:=20
+            </FONT><FONT color=3D"#ff6060"=20
+        =
+size=3D"-2">00</FONT></STRONG></TD></TR></TBODY></TABLE><BR><BR>This =
+block=20
+      indicates the end of the Called Sequence. The next block played =
+will be=20
+      the block after the last CALL block (or the next Call, if the Call =
+block=20
+      had multiple calls).<BR><BR>Again, this block has no body.<BR><BR>
+      <P align=3D"right"><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#ID_LIST">Return=20
+      to ID list</A> - <A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#INDEX">Return=20
+      to index</A></P><BR><BR><A name=3D"SELBLOCK"></A> <BR>
+      <TABLE width=3D"70%" align=3D"center" bgcolor=3D"#000000" =
+border=3D"0"=20
+      cellspacing=3D"1" cellpadding=3D"2">
+        <TBODY>
+        <TR bgcolor=3D"#80a0ff">
+          <TD align=3D"center" colspan=3D"4"><FONT color=3D"#ffffff"=20
+            size=3D"+2"><STRONG>ID 28 - Select =
+block</STRONG></FONT></TD></TR>
+        <TR bgcolor=3D"#fff000">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#606060" size=3D"-2">length:=20
+            </FONT><FONT color=3D"#ff6060" size=3D"-2">=20
+        [00,01]+02</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD width=3D"8%" align=3D"center"><STRONG>Offset</STRONG></TD>
+          <TD width=3D"8%" align=3D"center"><STRONG>Value</STRONG></TD>
+          <TD width=3D"15%" align=3D"center"><STRONG>Type</STRONG></TD>
+          <TD align=3D"center"><STRONG>Description</STRONG></TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x00</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD</TD>
+          <TD>Length of the whole block (without these two =
+bytes)</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x02</TD>
+          <TD align=3D"center">N</TD>
+          <TD align=3D"center">BYTE</TD>
+          <TD>Number of selections</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x03</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">SELECT[N]</TD>
+          <TD>List of selections</TD></TR></TBODY></TABLE><BR><BR>
+      <TABLE width=3D"70%" align=3D"center" bgcolor=3D"#000000" =
+border=3D"0"=20
+      cellspacing=3D"1" cellpadding=3D"2">
+        <TBODY>
+        <TR bgcolor=3D"#80a0ff">
+          <TD colspan=3D"4"><FONT color=3D"#ffffff" =
+size=3D"+2"><STRONG>SELECT=20
+            structure format</STRONG></FONT></TD></TR>
+        <TR bgcolor=3D"#ffc0c0">
+          <TD width=3D"8%" align=3D"center"><STRONG>Offset</STRONG></TD>
+          <TD width=3D"8%" align=3D"center"><STRONG>Value</STRONG></TD>
+          <TD width=3D"15%" align=3D"center"><STRONG>Type</STRONG></TD>
+          <TD align=3D"center"><STRONG>Description</STRONG></TD></TR>
+        <TR bgcolor=3D"#c0ffc0">
+          <TD align=3D"center">0x00</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD</TD>
+          <TD>Relative Offset</TD></TR>
+        <TR bgcolor=3D"#c0ffc0">
+          <TD align=3D"center">0x02</TD>
+          <TD align=3D"center">L</TD>
+          <TD align=3D"center">BYTE</TD>
+          <TD>Length of description text</TD></TR>
+        <TR bgcolor=3D"#c0ffc0">
+          <TD align=3D"center">0x03</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">CHAR[L]</TD>
+          <TD>Description text (please use single line and max. 30=20
+        chars)</TD></TR></TBODY></TABLE><BR><BR>This block is useful =
+when the tape=20
+      consists of two or more separately-loadable parts. With this =
+block, you=20
+      are able to select one of the parts and the utility/emulator will =
+start=20
+      loading from that block. For example you can use it when the game =
+has a=20
+      separate Trainer or when it is a multiload. Of course, to make =
+some use of=20
+      it the emulator/utility has to show a menu with the selections =
+when it
+       encounters such a block. All offsets are relative signed =
+words.<BR><BR>
+      <P align=3D"right"><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#ID_LIST">Return=20
+      to ID list</A> - <A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#INDEX">Return=20
+      to index</A></P><BR><BR><A name=3D"STOP48K"></A> <BR>
+      <TABLE width=3D"70%" align=3D"center" bgcolor=3D"#000000" =
+border=3D"0"=20
+      cellspacing=3D"1" cellpadding=3D"2">
+        <TBODY>
+        <TR bgcolor=3D"#80a0ff">
+          <TD align=3D"center" colspan=3D"4"><FONT color=3D"#ffffff"=20
+            size=3D"+2"><STRONG>ID 2A - Stop the tape if in 48K=20
+            mode</STRONG></FONT></TD></TR>
+        <TR bgcolor=3D"#fff000">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#606060" size=3D"-2">length:=20
+            </FONT><FONT color=3D"#ff6060" =
+size=3D"-2">04</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD width=3D"8%" align=3D"center"><STRONG>Offset</STRONG></TD>
+          <TD width=3D"8%" align=3D"center"><STRONG>Value</STRONG></TD>
+          <TD width=3D"15%" align=3D"center"><STRONG>Type</STRONG></TD>
+          <TD align=3D"center"><STRONG>Description</STRONG></TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x00</TD>
+          <TD align=3D"center">0</TD>
+          <TD align=3D"center">DWORD</TD>
+          <TD>Length of the block without these four bytes=20
+      (0)</TD></TR></TBODY></TABLE><BR><BR>When this block is =
+encountered, the=20
+      tape will stop ONLY if the machine is an 48K Spectrum. This block =
+is to be=20
+      used for multiloading games that load one level at a time in 48K =
+mode, but=20
+      load the entire tape at once if in 128K mode.<BR><BR>This block =
+has no=20
+      body of its own, but follows the extension rule.<BR><BR>
+      <P align=3D"right"><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#ID_LIST">Return=20
+      to ID list</A> - <A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#INDEX">Return=20
+      to index</A></P><BR><BR><A name=3D"SETLEVEL"></A> <BR>
+      <TABLE width=3D"70%" align=3D"center" bgcolor=3D"#000000" =
+border=3D"0"=20
+      cellspacing=3D"1" cellpadding=3D"2">
+        <TBODY>
+        <TR bgcolor=3D"#80a0ff">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#ffffff" size=3D"+2">ID=20
+            2B - Set signal level</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#fff000">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#606060" size=3D"-2">length:=20
+            </FONT><FONT color=3D"#ff6060" =
+size=3D"-2">05</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD width=3D"8%" align=3D"center"><STRONG>Offset</STRONG></TD>
+          <TD width=3D"8%" align=3D"center"><STRONG>Value</STRONG></TD>
+          <TD width=3D"15%" align=3D"center"><STRONG>Type</STRONG></TD>
+          <TD align=3D"center"><STRONG>Description</STRONG></TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x00</TD>
+          <TD align=3D"center">1</TD>
+          <TD align=3D"center">DWORD</TD>
+          <TD>Block length (without these four bytes)</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x04</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">BYTE</TD>
+          <TD>Signal level (0=3Dlow, =
+1=3Dhigh)</TD></TR></TBODY></TABLE><BR><BR>This=20
+      block sets the current signal level to the specified value (high =
+or low).=20
+      It should be used whenever it is necessary to avoid any =
+ambiguities, e.g.=20
+      with custom loaders which are level-sensitive.<BR><BR>
+      <P align=3D"right"><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#ID_LIST">Return=20
+      to ID list</A> - <A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#INDEX">Return=20
+      to index</A></P><BR><BR><A name=3D"TEXTDESCR"></A> <BR>
+      <TABLE width=3D"70%" align=3D"center" bgcolor=3D"#000000" =
+border=3D"0"=20
+      cellspacing=3D"1" cellpadding=3D"2">
+        <TBODY>
+        <TR bgcolor=3D"#80a0ff">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#ffffff" size=3D"+2">ID=20
+            30 - Text description</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#fff000">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#606060" size=3D"-2">length:=20
+            </FONT><FONT color=3D"#ff6060" =
+size=3D"-2">[00]+01</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD width=3D"8%" align=3D"center"><STRONG>Offset</STRONG></TD>
+          <TD width=3D"8%" align=3D"center"><STRONG>Value</STRONG></TD>
+          <TD width=3D"15%" align=3D"center"><STRONG>Type</STRONG></TD>
+          <TD align=3D"center"><STRONG>Description</STRONG></TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x00</TD>
+          <TD align=3D"center">N</TD>
+          <TD align=3D"center">BYTE</TD>
+          <TD> Length of the text description</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x01</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">CHAR[N]</TD>
+          <TD>Text description in ASCII =
+format</TD></TR></TBODY></TABLE><BR><BR>This=20
+      is meant to identify parts of the tape, so you know where level 1 =
+starts,=20
+      where to rewind to when the game ends, etc. This description is =
+not=20
+      guaranteed to be shown while the tape is playing, but can be read =
+while=20
+      browsing the tape or changing the tape pointer.<BR><BR>The =
+description can=20
+      be up to 255 characters long but please keep it down to about 30 =
+so the=20
+      programs can show it in one line (where this is =
+appropriate).<BR><BR>
+      Please use 'Archive Info' block for title, authors, publisher,=20
+etc.<BR><BR>
+      <P align=3D"right"><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#ID_LIST">Return=20
+      to ID list</A> - <A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#INDEX">Return=20
+      to index</A></P><BR><BR><A name=3D"MSGBLOCK"></A> <BR>
+      <TABLE width=3D"70%" align=3D"center" bgcolor=3D"#000000" =
+border=3D"0"=20
+      cellspacing=3D"1" cellpadding=3D"2">
+        <TBODY>
+        <TR bgcolor=3D"#80a0ff">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#ffffff" size=3D"+2">ID=20
+            31 - Message block</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#fff000">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#606060" size=3D"-2">length:=20
+            </FONT><FONT color=3D"#ff6060" =
+size=3D"-2">[01]+02</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD width=3D"8%" align=3D"center"><STRONG>Offset</STRONG></TD>
+          <TD width=3D"8%" align=3D"center"><STRONG>Value</STRONG></TD>
+          <TD width=3D"15%" align=3D"center"><STRONG>Type</STRONG></TD>
+          <TD align=3D"center"><STRONG>Description</STRONG></TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x00</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">BYTE</TD>
+          <TD>Time (in seconds) for which the message should be=20
+displayed</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x01</TD>
+          <TD align=3D"center">N</TD>
+          <TD align=3D"center">BYTE</TD>
+          <TD>Length of the text message</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x02</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">CHAR[N]</TD>
+          <TD>Message that should be displayed in ASCII=20
+      format</TD></TR></TBODY></TABLE><BR><BR>This will enable the =
+emulators to=20
+      display a message for a given time. This should not stop the tape =
+and it=20
+      should not make silence. If the time is 0 then the emulator should =
+wait=20
+      for the user to press a key.<BR><BR>The text message should:=20
+      <UL>
+        <LI>stick to a maximum of 30 chars per line;</LI>
+        <LI>use single 0x0D (13 decimal) to separate lines;</LI>
+        <LI>stick to a maximum of 8 lines.</LI></UL>If you do not obey =
+these=20
+      rules, emulators may display your message in any way they =
+like.<BR><BR>
+      <P align=3D"right"><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#ID_LIST">Return=20
+      to ID list</A> - <A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#INDEX">Return=20
+      to index</A></P><BR><BR><A name=3D"ARCHINFO"></A> <BR>
+      <TABLE width=3D"70%" align=3D"center" bgcolor=3D"#000000" =
+border=3D"0"=20
+      cellspacing=3D"1" cellpadding=3D"2">
+        <TBODY>
+        <TR bgcolor=3D"#80a0ff">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#ffffff" size=3D"+2">ID=20
+            32 - Archive info</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#fff000">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#606060" size=3D"-2">length:=20
+            </FONT><FONT color=3D"#ff6060"=20
+        size=3D"-2">[00,01]+02</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD width=3D"8%" align=3D"center"><STRONG>Offset</STRONG></TD>
+          <TD width=3D"8%" align=3D"center"><STRONG>Value</STRONG></TD>
+          <TD width=3D"15%" align=3D"center"><STRONG>Type</STRONG></TD>
+          <TD align=3D"center"><STRONG>Description</STRONG></TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x00</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD</TD>
+          <TD>Length of the whole block (without these two =
+bytes)</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x02</TD>
+          <TD align=3D"center">N</TD>
+          <TD align=3D"center">BYTE</TD>
+          <TD>Number of text strings</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x03</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">TEXT[N]</TD>
+          <TD>List of text strings</TD></TR></TBODY></TABLE><BR><BR>
+      <TABLE width=3D"70%" align=3D"center" bgcolor=3D"#000000" =
+border=3D"0"=20
+      cellspacing=3D"1" cellpadding=3D"2">
+        <TBODY>
+        <TR bgcolor=3D"#80a0ff">
+          <TD colspan=3D"4"><STRONG><FONT color=3D"#ffffff" =
+size=3D"+2">TEXT=20
+            structure format</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#ffc0c0">
+          <TD width=3D"8%" align=3D"center"><STRONG>Offset</STRONG></TD>
+          <TD width=3D"8%" align=3D"center"><STRONG>Value</STRONG></TD>
+          <TD width=3D"15%" align=3D"center"><STRONG>Type</STRONG></TD>
+          <TD align=3D"center"><STRONG>Description</STRONG></TD></TR>
+        <TR bgcolor=3D"#c0ffc0">
+          <TD align=3D"center">0x00</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">BYTE</TD>
+          <TD>Text identification byte:<BR>&nbsp;&nbsp;&nbsp; 00 - Full=20
+            title<BR>&nbsp;&nbsp;&nbsp; 01 - Software =
+house/publisher<BR>
+            &nbsp;&nbsp;&nbsp; 02 - Author(s)<BR>&nbsp;&nbsp;&nbsp; 03 - =
+Year of=20
+            publication<BR>&nbsp;&nbsp;&nbsp; 04 - Language<BR>
+            &nbsp;&nbsp;&nbsp; 05 - Game/utility =
+type<BR>&nbsp;&nbsp;&nbsp; 06 -=20
+            Price<BR>&nbsp;&nbsp;&nbsp; 07 - Protection =
+scheme/loader<BR>
+            &nbsp;&nbsp;&nbsp; 08 - Origin<BR>&nbsp;&nbsp;&nbsp; FF -=20
+            Comment(s)<BR></TD></TR>
+        <TR bgcolor=3D"#c0ffc0">
+          <TD align=3D"center">0x01</TD>
+          <TD align=3D"center">L</TD>
+          <TD align=3D"center">BYTE</TD>
+          <TD>Length of text string</TD></TR>
+        <TR bgcolor=3D"#c0ffc0">
+          <TD align=3D"center">0x02</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">CHAR[L]</TD>
+          <TD>Text string in ASCII =
+format</TD></TR></TBODY></TABLE><BR><BR>Use this=20
+      block at the beginning of the tape to identify the title of the =
+game,=20
+      author, publisher, year of publication, price (including the =
+currency),=20
+      type of software (arcade adventure, puzzle, word processor, ...),=20
+      protection scheme it uses (Speedlock 1, Alkatraz, ...) and its =
+origin=20
+      (Original, Budget re-release, ...), etc. This block is built in a =
+way that=20
+      allows easy future expansion. The block consists of a series of =
+text=20
+      strings. Each text has its identification number (which tells us =
+what the=20
+      text means) and then the ASCII text. To make it possible to skip =
+this=20
+      block, if needed, the length of the whole block is at the =
+beginning of=20
+      it.<BR><BR>If all texts on the tape are in English language then =
+you don't=20
+      have to supply the 'Language' field<BR><BR>The information about =
+what=20
+      hardware the tape uses is in the 'Hardware Type' block, so no need =
+for it=20
+      here.<BR><BR>
+      <P align=3D"right"><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#ID_LIST">Return=20
+      to ID list</A> - <A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#INDEX">Return=20
+      to index</A></P><BR><BR><A name=3D"HARDTYPE"></A> <BR>
+      <TABLE width=3D"70%" align=3D"center" bgcolor=3D"#000000" =
+border=3D"0"=20
+      cellspacing=3D"1" cellpadding=3D"2">
+        <TBODY>
+        <TR bgcolor=3D"#80a0ff">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#ffffff" size=3D"+2">ID=20
+            33 - Hardware type</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#fff000">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#606060" size=3D"-2">length:=20
+            </FONT><FONT color=3D"#ff6060"=20
+        size=3D"-2">[00]*03+01</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD width=3D"8%" align=3D"center"><STRONG>Offset</STRONG></TD>
+          <TD width=3D"8%" align=3D"center"><STRONG>Value</STRONG></TD>
+          <TD width=3D"15%" align=3D"center"><STRONG>Type</STRONG></TD>
+          <TD align=3D"center"><STRONG>Description</STRONG></TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x00</TD>
+          <TD align=3D"center">N</TD>
+          <TD align=3D"center">BYTE</TD>
+          <TD>Number of machines and hardware types for which info is=20
+          supplied</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x01</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">HWINFO[N]</TD>
+          <TD>List of machines and =
+hardware</TD></TR></TBODY></TABLE><BR><BR>
+      <TABLE width=3D"70%" align=3D"center" bgcolor=3D"#000000" =
+border=3D"0"=20
+      cellspacing=3D"1" cellpadding=3D"2">
+        <TBODY>
+        <TR bgcolor=3D"#80a0ff">
+          <TD colspan=3D"4"><STRONG><FONT color=3D"#ffffff" =
+size=3D"+2">HWINFO=20
+            structure format</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#ffc0c0">
+          <TD width=3D"8%" align=3D"center"><STRONG>Offset</STRONG></TD>
+          <TD width=3D"8%" align=3D"center"><STRONG>Value</STRONG></TD>
+          <TD width=3D"15%" align=3D"center"><STRONG>Type</STRONG></TD>
+          <TD align=3D"center"><STRONG>Description</STRONG></TD></TR>
+        <TR bgcolor=3D"#c0ffc0">
+          <TD align=3D"center">0x00</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">BYTE</TD>
+          <TD>Hardware type</TD></TR>
+        <TR bgcolor=3D"#c0ffc0">
+          <TD align=3D"center">0x01</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">BYTE</TD>
+          <TD>Hardware ID</TD></TR>
+        <TR bgcolor=3D"#c0ffc0">
+          <TD align=3D"center">0x02</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">BYTE</TD>
+          <TD>Hardware information:<BR>&nbsp;&nbsp;&nbsp; 00 - The tape =
+RUNS=20
+            on this machine or with this hardware,<BR>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; but may or =
+may not=20
+            use the hardware or special features of the machine.<BR>
+            &nbsp;&nbsp;&nbsp; 01 - The tape USES the hardware or =
+special=20
+            features of the =
+machine,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=20
+            &nbsp;&nbsp; such as extra memory or a sound chip.<BR>
+            &nbsp;&nbsp;&nbsp; 02 - The tape RUNS but it DOESN'T use the =
+
+            hardware<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
+&nbsp;&nbsp; or=20
+            special features of the machine.<BR>&nbsp;&nbsp;&nbsp; 03 - =
+The tape=20
+            DOESN'T RUN on this machine or with this=20
+      hardware.<BR></TD></TR></TBODY></TABLE><BR><BR>This blocks =
+contains=20
+      information about the hardware that the programs on this tape use. =
+Please
+       include only machines and hardware for which you are 100% sure =
+that it
+       either runs (or doesn't run) on or with, or you know it uses (or =
+doesn't=20
+      use) the hardware or special features of that machine.<BR><BR>If =
+the tape=20
+      runs only on the ZX81 (and TS1000, etc.) then it clearly won't =
+work on any=20
+      Spectrum or Spectrum variant, so there's no need to list this=20
+      information.<BR><BR>If you are not sure or you haven't tested a =
+tape on=20
+      some particular machine/hardware combination then do not include =
+it in the=20
+      list.<BR><BR>The list of hardware types and IDs is somewhat large, =
+and may=20
+      be found at the end of the format description.<BR><BR>
+      <P align=3D"right"><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#ID_LIST">Return=20
+      to ID list</A> - <A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#INDEX">Return=20
+      to index</A></P><BR><BR><A name=3D"CUSTOMBLOCK"></A> <BR>
+      <TABLE width=3D"70%" align=3D"center" bgcolor=3D"#000000" =
+border=3D"0"=20
+      cellspacing=3D"1" cellpadding=3D"2">
+        <TBODY>
+        <TR bgcolor=3D"#80a0ff">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#ffffff" size=3D"+2">ID=20
+            35 - Custom info block</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#fff000">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#606060" size=3D"-2">length:=20
+            </FONT><FONT color=3D"#ff6060"=20
+            size=3D"-2">[10,11,12,13]+14</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD width=3D"8%" align=3D"center"><STRONG>Offset</STRONG></TD>
+          <TD width=3D"8%" align=3D"center"><STRONG>Value</STRONG></TD>
+          <TD width=3D"15%" align=3D"center"><STRONG>Type</STRONG></TD>
+          <TD align=3D"center"><STRONG>Description</STRONG></TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x00</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">CHAR[10]</TD>
+          <TD>Identification string (in ASCII)</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x10</TD>
+          <TD align=3D"center">L</TD>
+          <TD align=3D"center">DWORD</TD>
+          <TD>Length of the custom info</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x14</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">BYTE[L]</TD>
+          <TD>Custom info</TD></TR></TBODY></TABLE><BR><BR>This block =
+can be used to=20
+      save any information you want. For example, it might contain some=20
+      information written by a utility, extra settings required by a =
+particular=20
+      emulator, or even poke data. <BR><BR>
+      <P align=3D"right"><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#ID_LIST">Return=20
+      to ID list</A> - <A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#INDEX">Return=20
+      to index</A></P><BR><BR><A name=3D"GLUEBLOCK"></A> <BR>
+      <TABLE width=3D"70%" align=3D"center" bgcolor=3D"#000000" =
+border=3D"0"=20
+      cellspacing=3D"1" cellpadding=3D"2">
+        <TBODY>
+        <TR bgcolor=3D"#80a0ff">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#ffffff" size=3D"+2">ID=20
+            5A - "Glue" block</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#fff000">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#606060" size=3D"-2">length:=20
+            </FONT><FONT color=3D"#ff6060" =
+size=3D"-2">09</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD width=3D"8%" align=3D"center"><STRONG>Offset</STRONG></TD>
+          <TD width=3D"8%" align=3D"center"><STRONG>Value</STRONG></TD>
+          <TD width=3D"15%" align=3D"center"><STRONG>Type</STRONG></TD>
+          <TD align=3D"center"><STRONG>Description</STRONG></TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x00</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">BYTE[9]</TD>
+          <TD>Value: { "XTape!",0x1A,MajR,MinR } <BR>Just skip these 9 =
+bytes=20
+            and you will end up on the next =
+ID.</TD></TR></TBODY></TABLE><BR><BR>This=20
+      block is generated when you merge two ZX Tape files together. It =
+is here=20
+      so that you can easily copy the files together and use them. Of =
+course,=20
+      this means that resulting file would be 10 bytes longer than if =
+this block=20
+      was not used. All you have to do if you encounter this block ID is =
+to skip=20
+      next 9 bytes.<BR>If you can avoid using this block for this =
+purpose, then=20
+      do so; it is preferable to use a utility to join the two files and =
+ensure=20
+      that they are both of the higher version number.<BR><BR>
+      <P align=3D"right"><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#ID_LIST">Return=20
+      to ID list</A> - <A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#INDEX">Return=20
+      to index</A></P><BR><BR></TD></TR></TBODY></TABLE><A =
+name=3D"HWINFOREF"></A> <BR>
+<P>
+<TABLE width=3D"100%" bgcolor=3D"#ffffff" border=3D"0" =
+cellspacing=3D"12" cellpadding=3D"0">
+  <TBODY>
+  <TR>
+    <TD width=3D"10%" align=3D"center" bgcolor=3D"#ff7848"><FONT =
+color=3D"white" size=3D"+2"><B>
+      4. </B></FONT></TD>
+    <TD><FONT size=3D"+2">Hardware information reference=20
+</FONT></TD></TR></TBODY></TABLE><BR>
+<TABLE width=3D"100%" border=3D"0">
+  <TBODY>
+  <TR>
+    <TD width=3D"10%"></TD>
+    <TD><BR><BR>This is the list of all hardware types and hardware=20
+      identification ID's that are used in the 'Hardware info' block. =
+Please=20
+      send any additions you might have to the TZX maintainers so that =
+they can=20
+      be included. <BR><BR>By default you don't have to write any of the =
+
+      information if the game is made for the ZX Spectrum and complies =
+with the=20
+      following:=20
+      <UL>
+        <LI>runs on ZX Spectrum 48K</LI>
+        <LI>runs on, but doesn't use any of the special hardware of ZX =
+Spectrum=20
+        128K</LI>
+        <LI>doesn't run on ZX Spectrum 16K</LI></UL>If, for example, =
+game works on=20
+      BOTH ZX 48K and 128K, and uses the hardware of the 128K Spectrum, =
+then you=20
+      would just include the 128K Spectrum in the list (because by =
+default it=20
+      has to work on 48K too).<BR>If the game is 128K ONLY then you =
+would=20
+      include two entries: The game works on AND uses the hardware of a =
+128K=20
+      Spectrum AND the game DOESN'T work on a 48K Spectrum.<BR>If the =
+game works=20
+      on both 48K and 128K Spectrum, but it only uses the sound chip =
+(AY) of the=20
+      128K Spectrum and none of its extra memory then you would only =
+include the=20
+      entry that says that the game uses the 'Classic AY hardware =
+(Spectrum 128=20
+      sompatible sound device)'.<BR><BR><BR>These were only some =
+examples of the=20
+      usage of this block.  <BR><BR>
+      <TABLE width=3D"70%" align=3D"center" bgcolor=3D"#000000" =
+border=3D"0"=20
+      cellspacing=3D"1" cellpadding=3D"2">
+        <TBODY>
+        <TR bgcolor=3D"#8080d0">
+          <TD align=3D"center"><FONT color=3D"#ffffff"><STRONG>Hardware=20
+            type</STRONG></FONT></TD>
+          <TD align=3D"center"><FONT color=3D"#ffffff"><STRONG>Hardware=20
+            ID</STRONG></FONT></TD></TR>
+        <TR bgcolor=3D"#f7f7ff">
+          <TD>00 - Computers</TD>
+          <TD>00 - ZX Spectrum 16k<BR>01 - ZX Spectrum 48k, Plus<BR>02 - =
+ZX=20
+            Spectrum 48k ISSUE 1<BR>03 - ZX Spectrum 128k =
++(Sinclair)<BR>04 - ZX=20
+            Spectrum 128k +2 (grey case)<BR>05 - ZX Spectrum 128k +2A, =
++3<BR>06=20
+            - Timex Sinclair TC-2048<BR>07 - Timex Sinclair =
+TS-2068<BR>08 -=20
+            Pentagon 128<BR>09 - Sam Coupe<BR>0A - Didaktik M<BR>0B - =
+Didaktik=20
+            Gama<BR>0C - ZX-80<BR>0D - ZX-81<BR>0E - ZX Spectrum 128k, =
+Spanish=20
+            version<BR>0F - ZX Spectrum, Arabic version<BR>10 - =
+Microdigital TK=20
+            90-X<BR>11 - Microdigital TK 95<BR>12 - Byte<BR>13 - Elwro =
+800-3=20
+            <BR>14 - ZS Scorpion 256<BR>15 - Amstrad CPC 464<BR>16 - =
+Amstrad CPC=20
+            664<BR>17 - Amstrad CPC 6128<BR>18 - Amstrad CPC 464+<BR>19 =
+-=20
+            Amstrad CPC 6128+<BR>1A - Jupiter ACE<BR>1B -=20
+            Enterprise<BR><STRIKE>1C - Commodore 64<BR>1D - Commodore=20
+            128</STRIKE><BR>1E - Inves Spectrum+<BR>1F - Profi<BR>20 -=20
+            GrandRomMax<BR>21 - Kay 1024<BR>22 - Ice Felix HC 91<BR>23 - =
+Ice=20
+            Felix HC 2000<BR>24 - Amaterske RADIO Mistrum<BR>25 - Quorum =
+128<BR>
+            26 - MicroART ATM<BR>27 - MicroART ATM Turbo 2<BR>28 - =
+Chrome<BR>29=20
+            - ZX Badaloc<BR>2A - TS-1500<BR>2B - Lambda<BR>2C - =
+TK-65<BR>2D -=20
+            ZX-97 </TD></TR>
+        <TR bgcolor=3D"#f7f7ff">
+          <TD>01 - External storage</TD>
+          <TD>00 - ZX Microdrive<BR>01 - Opus Discovery<BR>02 - MGT=20
+            Disciple<BR>03 - MGT Plus-D<BR>04 - Rotronics =
+Wafadrive<BR>05 -=20
+            TR-DOS (BetaDisk)<BR>06 - Byte Drive<BR>07 - Watsford<BR>08 =
+-=20
+            FIZ<BR>09 - Radofin<BR>0A - Didaktik disk drives<BR>0B - =
+BS-DOS=20
+            (MB-02)<BR>0C - ZX Spectrum +3 disk drive<BR>0D - JLO =
+(Oliger) disk=20
+            interface<BR>0E - Timex FDD3000<BR>0F - Zebra disk =
+drive<BR>10 -=20
+            Ramex Millenia<BR>11 - Larken<BR>12 - Kempston disk =
+interface<BR>13=20
+            - Sandy<BR>14 - ZX Spectrum +3e hard disk<BR>15 - =
+ZXATASP<BR>16 -=20
+            DivIDE<BR>17 - ZXCF </TD></TR>
+        <TR bgcolor=3D"#f7f7ff">
+          <TD>02 - ROM/RAM type add-ons</TD>
+          <TD>00 - Sam Ram<BR>01 - Multiface ONE<BR>02 - Multiface =
+128k<BR>03=20
+            - Multiface +3<BR>04 - MultiPrint<BR>05 - MB-02 ROM/RAM=20
+            expansion<BR>06 - SoftROM<BR>07 - 1k<BR>08 - 16k<BR>09 - =
+48k<BR>0A -=20
+            Memory in 8-16k used </TD></TR>
+        <TR bgcolor=3D"#f7f7ff">
+          <TD>03 - Sound devices</TD>
+          <TD>00 - Classic AY hardware (compatible with 128k ZXs)<BR>01 =
+-=20
+            Fuller Box AY sound hardware<BR>02 - Currah =
+microSpeech<BR>03 -=20
+            SpecDrum<BR>04 - AY ACB stereo (A+C=3Dleft, B+C=3Dright); =
+Melodik<BR>05=20
+            - AY ABC stereo (A+B=3Dleft, B+C=3Dright)<BR>06 - RAM Music =
+Machine<BR>
+            07 - Covox<BR>08 - General Sound<BR>09 - Intec Electronics =
+Digital=20
+            Interface B8001<BR>0A - Zon-X AY<BR>0B - QuickSilva AY<BR>0C =
+-=20
+            Jupiter ACE </TD></TR>
+        <TR bgcolor=3D"#f7f7ff">
+          <TD>04 - Joysticks</TD>
+          <TD>00 - Kempston<BR>01 - Cursor, Protek, AGF<BR>02 - Sinclair =
+2=20
+            Left  (12345)<BR>03 - Sinclair 1 Right (67890)<BR>04 - =
+Fuller </TD></TR>
+        <TR bgcolor=3D"#f7f7ff">
+          <TD>05 - Mice</TD>
+          <TD>00 - AMX mouse<BR>01 - Kempston mouse<BR></TD></TR>
+        <TR bgcolor=3D"#f7f7ff">
+          <TD>06 - Other controllers</TD>
+          <TD>00 - Trickstick<BR>01 - ZX Light Gun<BR>02 - Zebra =
+Graphics=20
+            Tablet<BR>03 - Defender Light Gun </TD></TR>
+        <TR bgcolor=3D"#f7f7ff">
+          <TD>07 - Serial ports</TD>
+          <TD>00 - ZX Interface 1<BR>01 - ZX Spectrum 128k </TD></TR>
+        <TR bgcolor=3D"#f7f7ff">
+          <TD>08 - Parallel ports</TD>
+          <TD>00 - Kempston S<BR>01 - Kempston E<BR>02 - ZX Spectrum =
++3<BR>03=20
+            - Tasman<BR>04 - DK'Tronics<BR>05 - Hilderbay<BR>06 - INES=20
+            Printerface<BR>07 - ZX LPrint Interface 3<BR>08 - =
+MultiPrint<BR>09 -=20
+            Opus Discovery<BR>0A - Standard 8255 chip with ports =
+31,63,95 </TD></TR>
+        <TR bgcolor=3D"#f7f7ff">
+          <TD>09 - Printers</TD>
+          <TD>00 - ZX Printer, Alphacom 32 &amp; compatibles<BR>01 - =
+Generic=20
+            printer<BR>02 - EPSON compatible </TD></TR>
+        <TR bgcolor=3D"#f7f7ff">
+          <TD>0A - Modems</TD>
+          <TD>00 - Prism VTX 5000<BR>01 - T/S 2050 or Westridge 2050 =
+</TD></TR>
+        <TR bgcolor=3D"#f7f7ff">
+          <TD>0B - Digitizers</TD>
+          <TD>00 - RD Digital Tracer<BR>01 - DK'Tronics Light Pen<BR>02 =
+-=20
+            British MicroGraph Pad<BR>03 - Romantic Robot =
+Videoface</TD></TR>
+        <TR bgcolor=3D"#f7f7ff">
+          <TD>0C - Network adapters</TD>
+          <TD>00 - ZX Interface 1 </TD></TR>
+        <TR bgcolor=3D"#f7f7ff">
+          <TD>0D - Keyboards &amp; keypads</TD>
+          <TD>00 - Keypad for ZX Spectrum 128k </TD></TR>
+        <TR bgcolor=3D"#f7f7ff">
+          <TD>0E - AD/DA converters </TD>
+          <TD>00 - Harley Systems ADC 8.2<BR>01 - Blackboard Electronics =
+
+</TD></TR>
+        <TR bgcolor=3D"#f7f7ff">
+          <TD>0F - EPROM programmers</TD>
+          <TD>00 - Orme Electronics </TD></TR>
+        <TR bgcolor=3D"#f7f7ff">
+          <TD>10 - Graphics</TD>
+          <TD>00 - WRX Hi-Res<BR>01 - G007<BR>02 - Memotech<BR>03 - =
+Lambda=20
+            Colour </TD></TR></TBODY></TABLE><BR><BR>
+      <P align=3D"right"><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#INDEX">Return=20
+      to index</A></P></TD></TR></TBODY></TABLE><BR><BR><A =
+name=3D"MACHINFO"></A> <BR>
+<P>
+<TABLE width=3D"100%" bgcolor=3D"#ffffff" border=3D"0" =
+cellspacing=3D"12" cellpadding=3D"0">
+  <TBODY>
+  <TR>
+    <TD width=3D"10%" align=3D"center" bgcolor=3D"#ff7848"><FONT =
+color=3D"white" size=3D"+2"><B>
+      5. </B></FONT></TD>
+    <TD><FONT size=3D"+2">Machine specific information=20
+</FONT></TD></TR></TBODY></TABLE><BR>
+<TABLE width=3D"100%" border=3D"0">
+  <TBODY>
+  <TR>
+    <TD width=3D"10%"></TD>
+    <TD><BR><BR>Currently supported machines are: ZX Spectrum, Amstrad =
+CPC,=20
+      SAM Coupe, ZX-81 Jupiter ACE and Enterprise. Only ZX-81 (or the =
+old Timex=20
+      1000) and Jupiter ACE use different tape encoding than the others. =
+
+      <UL>
+        <LI><STRONG>Jupiter ACE encoding</STRONG> - see <A =
+href=3D"http://www.jupiter-ace.co.uk/doc_AceTapeFormat.html">a=20
+        dedicated site</A>.</LI>
+        <LI><STRONG>ZX Spectrum, Amstrad CPC, SAM Coupe &amp; Enterprise =
+tape=20
+        encoding</STRONG> <BR><BR>These computers share the same tape =
+encoding,=20
+        which is normal frequency type encoding. Each bit is represented =
+by one=20
+        'wave' of different duration for bit 0 and bit 1. Normally bit 1 =
+is=20
+        twice as big as bit 0. In the blocks, the timings are presented =
+with Z80=20
+        T-states (cycles) per pulse. One wave is made from two pulses.=20
+        <BR><BR>The standard data blocks have always the same structure: =
+first
+         there is the PILOT tone, then the two SYNC pulses (one wave) =
+and after
+         that the actual DATA (which can include a FLAG byte at the =
+beginning
+         and a CHECKSUM byte at the end).<BR><BR>Here is a table showing =
+the=20
+        pulse timings for each part of the standard ROM load/save =
+routine for=20
+        each of these machines. If you have more accurate information =
+then we=20
+        would be glad to include it here. Enterprise has two loading =
+speeds so=20
+        timings for both are included. <BR><BR>
+        <TABLE width=3D"70%" align=3D"center" bgcolor=3D"#000000" =
+border=3D"0"=20
+        cellspacing=3D"1" cellpadding=3D"2">
+          <TBODY>
+          <TR bgcolor=3D"#8080df">
+            <TD align=3D"center"><FONT=20
+              color=3D"#ffffff"><STRONG>Machine</STRONG></FONT></TD>
+            <TD align=3D"center"><FONT color=3D"#ffffff"><STRONG>Pilot=20
+              pulse</STRONG></FONT></TD>
+            <TD align=3D"center"><FONT=20
+              color=3D"#ffffff"><STRONG>Length</STRONG></FONT></TD>
+            <TD align=3D"center"><FONT=20
+              color=3D"#ffffff"><STRONG>Sync1</STRONG></FONT></TD>
+            <TD align=3D"center"><FONT=20
+              color=3D"#ffffff"><STRONG>Sync2</STRONG></FONT></TD>
+            <TD align=3D"center"><FONT color=3D"#ffffff"><STRONG>Bit=20
+              0</STRONG></FONT></TD>
+            <TD align=3D"center"><FONT color=3D"#ffffff"><STRONG>Bit=20
+              1</STRONG></FONT></TD></TR>
+          <TR bgcolor=3D"#ffdf90">
+            <TD align=3D"center">ZX Spectrum</TD>
+            <TD align=3D"center">2168</TD>
+            <TD align=3D"center">(1)</TD>
+            <TD align=3D"center">667</TD>
+            <TD align=3D"center">735</TD>
+            <TD align=3D"center">855</TD>
+            <TD align=3D"center">1710</TD></TR>
+          <TR bgcolor=3D"#ffdf90">
+            <TD align=3D"center">SAM Coupe'</TD>
+            <TD align=3D"center">58+19*W</TD>
+            <TD align=3D"center">6000</TD>
+            <TD align=3D"center">58+9*W</TD>
+            <TD align=3D"center">113+9*W</TD>
+            <TD align=3D"center">10+8*W</TD>
+            <TD align=3D"center">42+15*W (*)</TD></TR>
+          <TR bgcolor=3D"#ffdf90">
+            <TD align=3D"center">Amstrad CPC</TD>
+            <TD align=3D"center">Bit 1</TD>
+            <TD align=3D"center">4096</TD>
+            <TD align=3D"center">Bit 0</TD>
+            <TD align=3D"center">Bit 0</TD>
+            <TD align=3D"center">(2)</TD>
+            <TD align=3D"center">(2)</TD></TR>
+          <TR bgcolor=3D"#ffdf90">
+            <TD align=3D"center">Enterprise (fast)</TD>
+            <TD align=3D"center">742</TD>
+            <TD align=3D"center">?</TD>
+            <TD align=3D"center">1280</TD>
+            <TD align=3D"center">1280</TD>
+            <TD align=3D"center">882</TD>
+            <TD align=3D"center">602 (**)</TD></TR>
+          <TR bgcolor=3D"#ffdf90">
+            <TD align=3D"center">Enterprise (slow)</TD>
+            <TD align=3D"center">1750</TD>
+            <TD align=3D"center">?</TD>
+            <TD align=3D"center">2800</TD>
+            <TD align=3D"center">2800</TD>
+            <TD align=3D"center">1982</TD>
+            <TD align=3D"center">1400=20
+        (**)</TD></TR></TBODY></TABLE><BR><BR><STRONG>Notes:</STRONG> =
+<BR>(1)=20
+        The Spectrum uses different pilot lengths for header and data =
+blocks.=20
+        Header blocks have 8063 and data blocks have 3223 pilot =
+pulses.<BR>(2)=20
+        Amstrad CPC ROM load/save routine can use variable speed for =
+loading, so=20
+        the bit 1 pulse must be read from the pilot tone and bit 0 can =
+be read=20
+        from the sync pulses, and is always half the size of bit 1. The =
+checksum=20
+        is also different than the other two machines. The speed can =
+vary from=20
+        1000 to 2000 baud.<BR>(*) The SAM Coupe' timings can be user =
+selected by=20
+        a system variable. The standard value is 112, which is VERY =
+close to ZX=20
+        Spectrum loading speed, and therefore the 'Standard Speed Data' =
+block=20
+        can be used for those blocks. However if this system variable is =
+changed=20
+        then the timings will change accordingly. In the above table the =
+value=20
+        of this variable is given as 'W', the 'H' value is 'W/2'. Of =
+course the=20
+        best way to determine it is to calculate it from the timings you =
+get=20
+        when sampling the Pilot tone. The values in the table could be =
+by a=20
+        fraction of the real ones, but it should not matter. Note: All =
+timings=20
+        are written in 3.5MHz clock. Also, there might be some junk bits =
+
+        (usually 7 or 8) AFTER the checksum (XOR) byte at the end of the =
+block,=20
+        but they can just be ignored.<BR>(**) The Enterprise stores data =
+in a=20
+        different way than all other computers do. It stores the LSb =
+first, but=20
+        the data blocks require the data to be MSb first. This might =
+lead to=20
+        some confusion, but if the same mechanism is used to replay data =
+for all=20
+        machines then there will be no problem. Just store the data as =
+MSb=20
+        first, but if you want to view the raw data in the TZX file then =
+you=20
+        will have to mirror each byte to get the correct=20
+        values.<BR><BR><STRONG>IMPORTANT:</STRONG> The ZXTape format has =
+ALL=20
+        timings written according to a 3.5MHz clock (the standard =
+Spectrum=20
+        16/48K clock), so if the tape should be used on an Amstrad CPC =
+with 4MHz=20
+        clock then you should multiply ALL timings with 4/3.5 when you =
+use that=20
+        tape (this should be trivial). Similarly goes for SAM Coupe, =
+that uses a=20
+        6MHz clock and Jupiter ACE that uses 3.2448 MHz and Enterprise =
+that uses=20
+        4 MHz! <BR><BR><BR></LI></UL><BR>
+      <P align=3D"right"><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#INDEX">Return=20
+      to index</A></P></TD></TR></TBODY></TABLE><BR><BR><A =
+name=3D"DEPRECATED"></A> <BR>
+<P>
+<TABLE width=3D"100%" bgcolor=3D"#ffffff" border=3D"0" =
+cellspacing=3D"12" cellpadding=3D"0">
+  <TBODY>
+  <TR>
+    <TD width=3D"10%" align=3D"center" bgcolor=3D"#ff7848"><FONT =
+color=3D"white" size=3D"+2"><B>
+      6. </B></FONT></TD>
+    <TD><FONT size=3D"+2">Deprecated blocks =
+</FONT></TD></TR></TBODY></TABLE><BR>
+<TABLE width=3D"100%" border=3D"0">
+  <TBODY>
+  <TR>
+    <TD width=3D"10%"></TD>
+    <TD>The following blocks, which were in the format until revision =
+1.13=20
+      (inclusive), have now been deprecated and they should not appear =
+in TZX=20
+      files v1.20 and above. Their structure is documented here for=20
+      completeness, to allow general tools and emulators to maintain =
+full=20
+      backward compatibility with old TZX files. However note that these =
+blocks=20
+      have not proven to be useful and, as a consequence, it appears =
+that almost=20
+      no existing TZX files contain them.=20
+      <UL>
+        <LI><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#C64ROM">ID 16=20
+        - C64 ROM type data block</A></LI>
+        <LI><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#C64TURBO">ID=20
+        17 - C64 turbo tape data block</A></LI>
+        <LI><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#EMUINFO">ID=20
+        34 - Emulation info</A></LI>
+        <LI><A=20
+        =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#CUSTINFODPR">ID 35 =
+-=20
+        Custom info deprecated types</A></LI>
+        <LI><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#SNAPSHOT">ID=20
+        40 - Snapshot block</A></LI></UL><A name=3D"C64ROM"></A> <BR>
+      <TABLE width=3D"70%" align=3D"center" bgcolor=3D"#000000" =
+border=3D"0"=20
+      cellspacing=3D"1" cellpadding=3D"2">
+        <TBODY>
+        <TR bgcolor=3D"#80a0ff">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#ffffff" size=3D"+2">ID=20
+            16 - C64 ROM Type Data Block</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#fff000">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#606060" size=3D"-2">length:=20
+            </FONT><FONT color=3D"#ff6060"=20
+          size=3D"-2">[00,01,02,03]</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD width=3D"8%" align=3D"center"><STRONG>Offset</STRONG></TD>
+          <TD width=3D"8%" align=3D"center"><STRONG>Value</STRONG></TD>
+          <TD width=3D"15%" align=3D"center"><STRONG>Type</STRONG></TD>
+          <TD align=3D"center"><STRONG>Description</STRONG></TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x00</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">DWORD</TD>
+          <TD>Length of the WHOLE block including the data (extension=20
+        rule)</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x04</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD</TD>
+          <TD>PILOT TONE pulse length [616]</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x06</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD</TD>
+          <TD>Number of waves in PILOT TONE</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x08</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD</TD>
+          <TD>SYNC first wave pulse length [1176]</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x0A</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD</TD>
+          <TD>SYNC 2nd wave pulse length [896]</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x0C</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD</TD>
+          <TD>ZERO bit 1st wave pulse length [616]</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x0E</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD</TD>
+          <TD>ZERO bit 2nd wave pulse length [896]</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x10</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD</TD>
+          <TD>ONE bit 1st wave pulse length [896]</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x12</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD</TD>
+          <TD>ONE bit 2nd wave pulse length [616]</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x14</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">BYTE</TD>
+          <TD>XOR Checksum bit for each Data byte: [1] =
+<BR>&nbsp;&nbsp;&nbsp;=20
+            00 - Start XOR checksum with value 0<BR>&nbsp;&nbsp;&nbsp; =
+01 -=20
+            Start XOR checksum with value 1<BR>&nbsp;&nbsp;&nbsp; FF - =
+No=20
+            checksum bit</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x15</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD</TD>
+          <TD>FINISH BYTE 1st wave pulse length [1176]</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x17</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD</TD>
+          <TD>FINISH BYTE 2nd wave pulse length [896]</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x19</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD</TD>
+          <TD>FINISH DATA 1st wave pulse length [1176]</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x1B</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD</TD>
+          <TD>FINISH DATA 2nd wave pulse length [616]</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x1D</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD</TD>
+          <TD>TRAILING TONE pulse length [616]</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x1F</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD</TD>
+          <TD>Number of waves in TRAILING TONE</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x21</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">BYTE</TD>
+          <TD>Used bits in last byte (other bits should be 0)<BR>(e.g. =
+if this=20
+            is 6, then the bits used (x) in last byte are: =
+xxxxxx00)</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x22</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">BYTE</TD>
+          <TD>General Purpose, bit-mapped: [1]<BR>&nbsp;&nbsp;&nbsp; bit =
+0 -=20
+            Data Endianess: 0=3DLSb first, 1=3DMSb first</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x23</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD</TD>
+          <TD>Pause after this block in milliseconds (ms.)</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x25</TD>
+          <TD align=3D"center">N</TD>
+          <TD align=3D"center">BYTE[3]</TD>
+          <TD>Length of following data</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x28</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">BYTE[N]</TD>
+          <TD>Data as in .TAP =
+files</TD></TR></TBODY></TABLE><BR><BR>Well, this=20
+      block was created to support the Commodore 64 standard ROM and =
+similar=20
+      tape blocks. It is made so basically anything that uses two or =
+four pulses=20
+      (which are the same in pairs) per bit can be written with =
+it.<BR><BR>Some=20
+      explanation:=20
+      <UL>
+        <LI>A wave consists of TWO pulses. The structure contains the =
+length of=20
+        ONE pulse.</LI>
+        <LI>The wave MUST always start with the LOW amplitude, since the =
+C64 can=20
+        only detect the transition HIGH -&gt; LOW.</LI>
+        <LI>If some pulse length is 0 then the whole wave must not be =
+present.=20
+        This applies to DATA too.</LI>
+        <LI>The XOR checksum (if it is set to 0 or 1) is a XOR of all =
+bits in
+         the byte XOR-ed with the value in this field as the start =
+value.</LI>
+        <LI>Finish Byte waves should be played after each byte EXCEPT =
+last=20
+        one.</LI>
+        <LI>Finish Data waves should be ONLY played after last byte of=20
+data.</LI>
+        <LI>When all the Data has finished there is an optional Trailer =
+Tone,=20
+        which is standard for the Repeated Blocks in C64 ROM =
+Loader.</LI></UL>The=20
+      replay procedure looks like this:=20
+      <OL>
+        <LI>Pilot Tone</LI>
+        <LI>Sync waves</LI>
+        <LI>Data Bytes (with XOR and/or Finish Byte waves)</LI>
+        <LI>Finish Data pulses</LI>
+        <LI>Trailing Tone</LI></OL>The numbers in brackets [] represent =
+the values=20
+      for C64 ROM loader.<BR><BR>
+      <P align=3D"right"><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#DEPRECATED">Return =
+
+      to deprecated ID list</A> - <A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#INDEX">Return=20
+      to index</A></P><BR><BR><A name=3D"C64TURBO"></A> <BR>
+      <TABLE width=3D"70%" align=3D"center" bgcolor=3D"#000000" =
+border=3D"0"=20
+      cellspacing=3D"1" cellpadding=3D"2">
+        <TBODY>
+        <TR bgcolor=3D"#80a0ff">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#ffffff" size=3D"+2">ID=20
+            17 - C64 Turbo Tape Data Block</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#fff000">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#606060" size=3D"-2">length:=20
+            </FONT><FONT color=3D"#ff6060"=20
+          size=3D"-2">[00,01,02,03]</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD width=3D"8%" align=3D"center"><STRONG>Offset</STRONG></TD>
+          <TD width=3D"8%" align=3D"center"><STRONG>Value</STRONG></TD>
+          <TD width=3D"15%" align=3D"center"><STRONG>Type</STRONG></TD>
+          <TD align=3D"center"><STRONG>Description</STRONG></TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x00</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">DWORD</TD>
+          <TD>Length of the WHOLE block including the data (extension=20
+        rule)</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x04</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD</TD>
+          <TD>ZERO bit pulse</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x06</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD</TD>
+          <TD>ONE bit pulse</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x08</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">BYTE</TD>
+          <TD>Additional bits in bytes =
+(bit-mapped)<BR>&nbsp;&nbsp;&nbsp; bits=20
+            0-1: number of bits (0-3)<BR>&nbsp;&nbsp;&nbsp; bit 2: play=20
+            additional bit(s) BEFORE (0) or AFTER (1) the byte<BR>
+            &nbsp;&nbsp;&nbsp; bit 3: value of additional =
+bit(s)</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x09</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD</TD>
+          <TD>Number of lead-in bytes</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x0B</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">BYTE</TD>
+          <TD>Lead-in byte</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x0C</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">BYTE</TD>
+          <TD>Used bits in last byte (other bits should be 0) =
+[8]<BR>(e.g. if=20
+            this is 6, then the bits used (x) in last byte are: =
+xxxxxx00)</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x0D</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">BYTE</TD>
+          <TD>General purpose (bit-mapped) [0]<BR>&nbsp;&nbsp;&nbsp; bit =
+0:=20
+            little (0) or big (1) endian format </TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x0E</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD</TD>
+          <TD>Number of trailing bytes</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x10</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">BYTE</TD>
+          <TD>Trailing byte</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x11</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD</TD>
+          <TD>Pause after this block in milliseconds (ms.)</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x13</TD>
+          <TD align=3D"center">N</TD>
+          <TD align=3D"center">BYTE[3]</TD>
+          <TD>Length of following data</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x16</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">BYTE[N]</TD>
+          <TD>Data as in .TAP =
+files</TD></TR></TBODY></TABLE><BR><BR>This block is=20
+      made to support another type of encoding that is commonly used by =
+the C64.=20
+      Most of the commercial software uses this type of encoding, i.e. =
+the Pilot=20
+      tone is not made from one type of Wave only, but it is made from =
+actual=20
+      Data byte which is repeated many times. As the Sync value another, =
+
+      different, Data byte is sent to signal the start of the data. The =
+Data=20
+      Bits are made from ONE wave only and there is NO XOR checksum =
+either!=20
+      Trailing byte is played AFTER the DATA has ended.<BR><BR>
+      <P align=3D"right"><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#DEPRECATED">Return =
+
+      to deprecated ID list</A> - <A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#INDEX">Return=20
+      to index</A></P><BR><BR><A name=3D"EMUINFO"></A> <BR>
+      <TABLE width=3D"70%" align=3D"center" bgcolor=3D"#000000" =
+border=3D"0"=20
+      cellspacing=3D"1" cellpadding=3D"2">
+        <TBODY>
+        <TR bgcolor=3D"#80a0ff">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#ffffff" size=3D"+2">ID=20
+            34 - Emulation info</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#fff000">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#606060" size=3D"-2">length:=20
+            </FONT><FONT color=3D"#ff6060" =
+size=3D"-2">08</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD width=3D"8%" align=3D"center"><STRONG>Offset</STRONG></TD>
+          <TD width=3D"8%" align=3D"center"><STRONG>Value</STRONG></TD>
+          <TD width=3D"15%" align=3D"center"><STRONG>Type</STRONG></TD>
+          <TD align=3D"center"><STRONG>Description</STRONG></TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x00</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD</TD>
+          <TD>General emulation flags:<BR>&nbsp;&nbsp;&nbsp; bit 0 :=20
+            R-register emulation [1]<BR>&nbsp;&nbsp;&nbsp; bit 1 : LDIR=20
+            emulation [1]<BR>&nbsp;&nbsp;&nbsp; bit 2 : high resolution =
+colour=20
+            emulation with true interrupt freq. =
+[1]<BR>&nbsp;&nbsp;&nbsp; bit=20
+            3,4 : video synchronisation : 1=3Dhigh, 3=3Dlow, =
+0,2=3Dnormal [0]<BR>
+            &nbsp;&nbsp;&nbsp; bit 5 : fast loading when ROM load =
+routine is=20
+            used [1]<BR>&nbsp;&nbsp;&nbsp; bit 6 : border emulation =
+[1]<BR>
+            &nbsp;&nbsp;&nbsp; bit 7 : screen refresh mode (1: ON, 0: =
+OFF)=20
+            [1]<BR>&nbsp;&nbsp;&nbsp; bit 8 : start playing the tape =
+immediately=20
+            =
+[0]<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=20
+            If this is 0 then the emulator should only load the info =
+blocks<BR>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
+and=20
+            WAIT when it encounters first DATA =
+block<BR>&nbsp;&nbsp;&nbsp; bit 9=20
+            : auto type LOAD"" or press ENTER when in 128k mode [0] =
+</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x02</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">BYTE</TD>
+          <TD>Screen refresh delay : 1 - 255 (interrupts between =
+refreshes)=20
+            [1]<BR>(used when screen refresh mode is ON) </TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x03</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">WORD</TD>
+          <TD>Interrupt Frequency  : 0 - 999 Hz</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x05</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">BYTE[3]</TD>
+          <TD>Reserved for future =
+expansion</TD></TR></TBODY></TABLE><BR><BR>This is=20
+      a special block that would normally be generated only by =
+emulators. For=20
+      now it contains info on everything I could find that other formats =
+
+      support. Please inform me of any additions/corrections since this =
+is a=20
+      very important part for emulators.<BR><BR>Those bits that are not =
+used by=20
+      the emulator that stored the info, should be left at their DEFAULT =
+
+      values.<BR><BR>
+      <P align=3D"right"><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#DEPRECATED">Return =
+
+      to deprecated ID list</A> - <A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#INDEX">Return=20
+      to index</A></P><BR><BR><A name=3D"CUSTINFODPR"></A> <BR>Some of =
+the most=20
+      common uses of the Custom info block (ID 35) have become =
+standardized in=20
+      the past revisions, although now they are deprecated:<BR><BR>
+      <UL>
+        <LI><STRONG>POKEs block</STRONG> <BR><BR><BR>The purpose of this =
+custom=20
+        block is to hold any amount of different trainers for the game. =
+<BR><BR>
+        <TABLE width=3D"70%" align=3D"center" bgcolor=3D"#000000" =
+border=3D"0"=20
+        cellspacing=3D"1" cellpadding=3D"2">
+          <TBODY>
+          <TR bgcolor=3D"#ffc0c0">
+            <TD width=3D"8%" =
+align=3D"center"><STRONG>Offset</STRONG></TD>
+            <TD width=3D"8%" =
+align=3D"center"><STRONG>Value</STRONG></TD>
+            <TD width=3D"15%" =
+align=3D"center"><STRONG>Type</STRONG></TD>
+            <TD align=3D"center"><STRONG>Description</STRONG></TD></TR>
+          <TR bgcolor=3D"#c0ffc0">
+            <TD align=3D"center">0x00</TD>
+            <TD align=3D"center">-</TD>
+            <TD align=3D"center">CHAR[10]</TD>
+            <TD>"POKEs" + 11 spaces (custom block ID)</TD></TR>
+          <TR bgcolor=3D"#c0ffc0">
+            <TD align=3D"center">0x10</TD>
+            <TD align=3D"center">-</TD>
+            <TD align=3D"center">DWORD</TD>
+            <TD>Length of data that follow</TD></TR>
+          <TR bgcolor=3D"#c0ffc0">
+            <TD align=3D"center">0x14</TD>
+            <TD align=3D"center">L</TD>
+            <TD align=3D"center">BYTE</TD>
+            <TD>General description length</TD></TR>
+          <TR bgcolor=3D"#c0ffc0">
+            <TD align=3D"center">0x15</TD>
+            <TD align=3D"center">-</TD>
+            <TD align=3D"center">CHAR[L]</TD>
+            <TD>General description in ASCII format</TD></TR>
+          <TR bgcolor=3D"#c0ffc0">
+            <TD align=3D"center">0x15+L</TD>
+            <TD align=3D"center">N</TD>
+            <TD align=3D"center">BYTE</TD>
+            <TD>Number of trainers</TD></TR>
+          <TR bgcolor=3D"#c0ffc0">
+            <TD align=3D"center">0x15+L+1</TD>
+            <TD align=3D"center">-</TD>
+            <TD align=3D"center">TRAINER[N]</TD>
+            <TD>Trainer =
+definitions</TD></TR></TBODY></TABLE><BR><BR>Each trainer=20
+        can have its own description and any number of POKEs.<BR><BR>
+        <TABLE width=3D"70%" align=3D"center" bgcolor=3D"#000000" =
+border=3D"0"=20
+        cellspacing=3D"1" cellpadding=3D"2">
+          <TBODY>
+          <TR bgcolor=3D"#80a0ff">
+            <TD colspan=3D"4"><STRONG><FONT color=3D"#ffffff" =
+size=3D"+2">TRAINER=20
+              structure format</FONT></STRONG></TD></TR>
+          <TR bgcolor=3D"#c0f0ff">
+            <TD width=3D"10%" =
+align=3D"center"><STRONG>Offset</STRONG></TD>
+            <TD width=3D"8%" =
+align=3D"center"><STRONG>Value</STRONG></TD>
+            <TD width=3D"15%" =
+align=3D"center"><STRONG>Type</STRONG></TD>
+            <TD align=3D"center"><STRONG>Description</STRONG></TD></TR>
+          <TR bgcolor=3D"#ffff90">
+            <TD align=3D"center">0x00</TD>
+            <TD align=3D"center">L</TD>
+            <TD align=3D"center">BYTE</TD>
+            <TD>Trainer description length</TD></TR>
+          <TR bgcolor=3D"#ffff90">
+            <TD align=3D"center">0x01</TD>
+            <TD align=3D"center">-</TD>
+            <TD align=3D"center">CHAR[L]</TD>
+            <TD>Trainer description in ASCII format</TD></TR>
+          <TR bgcolor=3D"#ffff90">
+            <TD align=3D"center">0x01+L</TD>
+            <TD align=3D"center">N</TD>
+            <TD align=3D"center">BYTE</TD>
+            <TD>Number of pokes in this trainer</TD></TR>
+          <TR bgcolor=3D"#ffff90">
+            <TD align=3D"center">0x01+L+1</TD>
+            <TD align=3D"center">-</TD>
+            <TD align=3D"center">POKE[N]</TD>
+            <TD>POKEs definitions</TD></TR></TBODY></TABLE><BR><BR>For =
+each POKE=20
+        entry you can supply the memory page number and/or the original =
+value of=20
+        the address (if you want to restore it some way through the =
+game).=20
+        Normally you would enter these pokes with the help of some =
+freezer-type=20
+        tool like Multiface, but hopefully in the future the emulators =
+will=20
+        support this block directly, in which case you could use the =
+'User=20
+        inserts the POKE value' feature. You can specify the point at =
+which to=20
+        insert the POKEs in the 'General description' =
+field.<BR><BR>NOTE: All=20
+        ASCII Descriptions can use more than one line. Please use only =
+up to 30=20
+        characters per line and separate the lines by one CR (13 dec). =
+<BR><BR>
+        <TABLE width=3D"70%" align=3D"center" bgcolor=3D"#000000" =
+border=3D"0"=20
+        cellspacing=3D"1" cellpadding=3D"2">
+          <TBODY>
+          <TR bgcolor=3D"#80a0ff">
+            <TD colspan=3D"4"><STRONG><FONT color=3D"#ffffff" =
+size=3D"+2">POKE=20
+              structure format</FONT></STRONG></TD></TR>
+          <TR bgcolor=3D"#8080d0">
+            <TD width=3D"8%" align=3D"center"><FONT=20
+              color=3D"#ffffff"><STRONG>Offset</STRONG></FONT></TD>
+            <TD width=3D"8%" align=3D"center"><FONT=20
+              color=3D"#ffffff"><STRONG>Value</STRONG></FONT></TD>
+            <TD width=3D"15%" align=3D"center"><FONT=20
+              color=3D"#ffffff"><STRONG>Type</STRONG></FONT></TD>
+            <TD align=3D"center"><FONT=20
+              =
+color=3D"#ffffff"><STRONG>Description</STRONG></FONT></TD></TR>
+          <TR bgcolor=3D"#f7f7ff">
+            <TD align=3D"center">0x00</TD>
+            <TD align=3D"center">-</TD>
+            <TD align=3D"center">BYTE</TD>
+            <TD>POKE type:<BR>&nbsp;&nbsp;&nbsp; bit 0-2 : memory page=20
+              number<BR>&nbsp;&nbsp;&nbsp; bit 3 : ignore memory page =
+number<BR>
+              &nbsp;&nbsp;&nbsp; bit 4 : user inserts the POKE value<BR>
+              &nbsp;&nbsp;&nbsp; bit 5 : unknown original value =
+</TD></TR>
+          <TR bgcolor=3D"#f7f7ff">
+            <TD align=3D"center">0x01</TD>
+            <TD align=3D"center">-</TD>
+            <TD align=3D"center">WORD</TD>
+            <TD>POKE address</TD></TR>
+          <TR bgcolor=3D"#f7f7ff">
+            <TD align=3D"center">0x03</TD>
+            <TD align=3D"center">-</TD>
+            <TD align=3D"center">BYTE</TD>
+            <TD>POKE value (leave 0 if 'user inserts' bit set)</TD></TR>
+          <TR bgcolor=3D"#f7f7ff">
+            <TD align=3D"center">0x04</TD>
+            <TD align=3D"center">-</TD>
+            <TD align=3D"center">BYTE</TD>
+            <TD>POKE original value (leave 0 if 'unknown' bit=20
+          set)</TD></TR></TBODY></TABLE><BR><BR></LI>
+        <LI><STRONG>Instructions block</STRONG> <BR><BR>This block can =
+hold any=20
+        general .TXT file, with the main purpose of storing the =
+instructions to=20
+        the program or game that is in the tape.<BR><BR>To ensure =
+consistency=20
+        with all other ASCII texts in this format please use a single CR =
+
+        character (13 dec, 0D hex) to separate lines; also please use =
+only up to=20
+        80 characters per line. <BR><BR>
+        <TABLE width=3D"70%" align=3D"center" bgcolor=3D"#000000" =
+border=3D"0"=20
+        cellspacing=3D"1" cellpadding=3D"2">
+          <TBODY>
+          <TR bgcolor=3D"#ffc0c0">
+            <TD width=3D"8%" =
+align=3D"center"><STRONG>Offset</STRONG></TD>
+            <TD width=3D"8%" =
+align=3D"center"><STRONG>Value</STRONG></TD>
+            <TD width=3D"15%" =
+align=3D"center"><STRONG>Type</STRONG></TD>
+            <TD align=3D"center"><STRONG>Description</STRONG></TD></TR>
+          <TR bgcolor=3D"#c0ffc0">
+            <TD align=3D"center">0x00</TD>
+            <TD align=3D"center">-</TD>
+            <TD align=3D"center">CHAR[10]</TD>
+            <TD>"Instructions" + 4 spaces (custom block ID)</TD></TR>
+          <TR bgcolor=3D"#c0ffc0">
+            <TD align=3D"center">0x10</TD>
+            <TD align=3D"center">L</TD>
+            <TD align=3D"center">DWORD</TD>
+            <TD>Length of the following data</TD></TR>
+          <TR bgcolor=3D"#c0ffc0">
+            <TD align=3D"center">0x14</TD>
+            <TD align=3D"center">-</TD>
+            <TD align=3D"center">BYTE[L]</TD>
+            <TD>Instructions text in ASCII=20
+        format</TD></TR></TBODY></TABLE><BR><BR></LI>
+        <LI><STRONG>Spectrum screen block</STRONG> <BR><BR>If the game =
+on the=20
+        tape is not an original and lacks the original loading screen =
+then you=20
+        can supply it separately within this block. This is also very =
+handy when=20
+        you want the loading screen stored separately because the =
+original is=20
+        either encrypted (like with the 'Speedlock' or 'Alkatraz' =
+loaders) or it=20
+        is corrupted by some on-screen info (like the 'Bleepload' =
+loader). Of=20
+        course not only loading screens can be stored here... you can =
+use it to=20
+        store maps or any other picture that is in Spectrum Video format =
+(that's=20
+        why the Description is there for), but because the Loading =
+Screen will=20
+        be the most common you can just set the description length field =
+to 0=20
+        when you use it for that. Also the border colour can be =
+specified.=20
+        <BR><BR>
+        <TABLE width=3D"70%" align=3D"center" bgcolor=3D"#000000" =
+border=3D"0"=20
+        cellspacing=3D"1" cellpadding=3D"2">
+          <TBODY>
+          <TR bgcolor=3D"#ffc0c0">
+            <TD width=3D"8%" =
+align=3D"center"><STRONG>Offset</STRONG></TD>
+            <TD width=3D"8%" =
+align=3D"center"><STRONG>Value</STRONG></TD>
+            <TD width=3D"15%" =
+align=3D"center"><STRONG>Type</STRONG></TD>
+            <TD align=3D"center"><STRONG>Description</STRONG></TD></TR>
+          <TR bgcolor=3D"#c0ffc0">
+            <TD align=3D"center">0x00</TD>
+            <TD align=3D"center">-</TD>
+            <TD align=3D"center">CHAR[10]</TD>
+            <TD>"Spectrum Screen" + 1 spaces (custom block ID)</TD></TR>
+          <TR bgcolor=3D"#c0ffc0">
+            <TD align=3D"center">0x10</TD>
+            <TD align=3D"center">-</TD>
+            <TD align=3D"center">DWORD</TD>
+            <TD>Length of data that follow</TD></TR>
+          <TR bgcolor=3D"#c0ffc0">
+            <TD align=3D"center">0x14</TD>
+            <TD align=3D"center">L</TD>
+            <TD align=3D"center">BYTE</TD>
+            <TD>Description length (if this is 0 then handle it as =
+'Loading=20
+              Screen')</TD></TR>
+          <TR bgcolor=3D"#c0ffc0">
+            <TD align=3D"center">0x15</TD>
+            <TD align=3D"center">-</TD>
+            <TD align=3D"center">CHAR[L]</TD>
+            <TD>Description of the picture in ASCII format</TD></TR>
+          <TR bgcolor=3D"#c0ffc0">
+            <TD align=3D"center">0x15+L</TD>
+            <TD align=3D"center">-</TD>
+            <TD align=3D"center">BYTE</TD>
+            <TD>BORDER Colour in Spectrum colour format (0=3Dblack, =
+1=3Dblue,=20
+            ...)</TD></TR>
+          <TR bgcolor=3D"#c0ffc0">
+            <TD align=3D"center">0x15+L+1</TD>
+            <TD align=3D"center">-</TD>
+            <TD align=3D"center">BYTE[6912]</TD>
+            <TD>Screen in standard Spectrum video=20
+        format</TD></TR></TBODY></TABLE><BR><BR></LI>
+        <LI><STRONG>ZX-Edit document block</STRONG> <BR><BR>This block =
+can hold=20
+        files created with the new utility called ZX-Editor. This =
+utility gives=20
+        documents the look and feel of ZX-Spectrum and its documents can =
+contain=20
+        text, graphics (with Spectrum attributes), different type faces, =
+
+        colours, etc. Normally these files use extension .ZED. Also the=20
+        description is added, in case you want to use it for something =
+else than=20
+        'Instructions' - you can use it for MAPs, etc.<BR><BR>
+        <TABLE width=3D"70%" align=3D"center" bgcolor=3D"#000000" =
+border=3D"0"=20
+        cellspacing=3D"1" cellpadding=3D"2">
+          <TBODY>
+          <TR bgcolor=3D"#ffc0c0">
+            <TD width=3D"8%" =
+align=3D"center"><STRONG>Offset</STRONG></TD>
+            <TD width=3D"8%" =
+align=3D"center"><STRONG>Value</STRONG></TD>
+            <TD width=3D"15%" =
+align=3D"center"><STRONG>Type</STRONG></TD>
+            <TD align=3D"center"><STRONG>Description</STRONG></TD></TR>
+          <TR bgcolor=3D"#c0ffc0">
+            <TD align=3D"center">0x00</TD>
+            <TD align=3D"center">-</TD>
+            <TD align=3D"center">CHAR[10]</TD>
+            <TD>"ZX-Edit document" (custom block ID)</TD></TR>
+          <TR bgcolor=3D"#c0ffc0">
+            <TD align=3D"center">0x10</TD>
+            <TD align=3D"center">-</TD>
+            <TD align=3D"center">DWORD</TD>
+            <TD>Length of data that follow</TD></TR>
+          <TR bgcolor=3D"#c0ffc0">
+            <TD align=3D"center">0x14</TD>
+            <TD align=3D"center">L</TD>
+            <TD align=3D"center">BYTE</TD>
+            <TD>Description length (if this is 0 then handle it as=20
+              'Instructions')</TD></TR>
+          <TR bgcolor=3D"#c0ffc0">
+            <TD align=3D"center">0x15</TD>
+            <TD align=3D"center">-</TD>
+            <TD align=3D"center">CHAR[L]</TD>
+            <TD>Description of the document in ASCII format</TD></TR>
+          <TR bgcolor=3D"#c0ffc0">
+            <TD align=3D"center">0x15+L</TD>
+            <TD align=3D"center">-</TD>
+            <TD align=3D"center">BYTE[]</TD>
+            <TD>The ZX-Editor document (.ZED=20
+        file)</TD></TR></TBODY></TABLE><BR><BR></LI>
+        <LI><STRONG>Picture block</STRONG> <BR><BR>Finally you can =
+include any=20
+        picture (in supported formats) in the TZX file too. So cover =
+pictures,=20
+        maps, etc. can now be included in full colour (or whatever the =
+formats=20
+        supports). The best way for utilities to use this block is to =
+spawn an=20
+        external viewer, or the authors can write their own viewers =
+(yeah, right=20
+        ;) ). For inlay cards and other pictures that have zillions of =
+colours=20
+        use the JPEG format, for more simple pictures (drawing, maps, =
+etc.) use=20
+        the GIF format. <BR><BR>
+        <TABLE width=3D"70%" align=3D"center" bgcolor=3D"#000000" =
+border=3D"0"=20
+        cellspacing=3D"1" cellpadding=3D"2">
+          <TBODY>
+          <TR bgcolor=3D"#ffc0c0">
+            <TD width=3D"8%" =
+align=3D"center"><STRONG>Offset</STRONG></TD>
+            <TD width=3D"8%" =
+align=3D"center"><STRONG>Value</STRONG></TD>
+            <TD width=3D"15%" =
+align=3D"center"><STRONG>Type</STRONG></TD>
+            <TD align=3D"center"><STRONG>Description</STRONG></TD></TR>
+          <TR bgcolor=3D"#c0ffc0">
+            <TD align=3D"center">0x00</TD>
+            <TD align=3D"center">-</TD>
+            <TD align=3D"center">CHAR[10]</TD>
+            <TD>"Picture" + 9 spaces (custom block ID)</TD></TR>
+          <TR bgcolor=3D"#c0ffc0">
+            <TD align=3D"center">0x10</TD>
+            <TD align=3D"center">-</TD>
+            <TD align=3D"center">DWORD</TD>
+            <TD>Length of data that follow</TD></TR>
+          <TR bgcolor=3D"#c0ffc0">
+            <TD align=3D"center">0x14</TD>
+            <TD align=3D"center">-</TD>
+            <TD align=3D"center">BYTE</TD>
+            <TD>Picture format:<BR>&nbsp;&nbsp;&nbsp; 00 - GIF<BR>
+              &nbsp;&nbsp;&nbsp; 01 - JPEG</TD></TR>
+          <TR bgcolor=3D"#c0ffc0">
+            <TD align=3D"center">0x15</TD>
+            <TD align=3D"center">L</TD>
+            <TD align=3D"center">BYTE</TD>
+            <TD>Description length (if this is 0 then handle it as =
+'Inlay=20
+              Card')</TD></TR>
+          <TR bgcolor=3D"#c0ffc0">
+            <TD align=3D"center">0x16</TD>
+            <TD align=3D"center">-</TD>
+            <TD align=3D"center">CHAR[L]</TD>
+            <TD>Description of the document in ASCII format</TD></TR>
+          <TR bgcolor=3D"#c0ffc0">
+            <TD align=3D"center">0x16+L</TD>
+            <TD align=3D"center">-</TD>
+            <TD align=3D"center">BYTE[]</TD>
+            <TD>The picture =
+itself</TD></TR></TBODY></TABLE></LI></UL><BR>
+      <P align=3D"right"><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#DEPRECATED">Return =
+
+      to deprecated ID list</A> - <A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#INDEX">Return=20
+      to index</A></P><BR><BR><A name=3D"SNAPSHOT"></A> <BR>
+      <TABLE width=3D"70%" align=3D"center" bgcolor=3D"#000000" =
+border=3D"0"=20
+      cellspacing=3D"1" cellpadding=3D"2">
+        <TBODY>
+        <TR bgcolor=3D"#80a0ff">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#ffffff" size=3D"+2">ID=20
+            40 - Snapshot block</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#fff000">
+          <TD align=3D"center" colspan=3D"4"><STRONG><FONT =
+color=3D"#606060" size=3D"-2">length:=20
+            </FONT><FONT color=3D"#ff6060"=20
+          size=3D"-2">[01,02,03]+04</FONT></STRONG></TD></TR>
+        <TR bgcolor=3D"#ffdf90">
+          <TD width=3D"8%" align=3D"center"><STRONG>Offset</STRONG></TD>
+          <TD width=3D"8%" align=3D"center"><STRONG>Value</STRONG></TD>
+          <TD width=3D"15%" align=3D"center"><STRONG>Type</STRONG></TD>
+          <TD align=3D"center"><STRONG>Description</STRONG></TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x00</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">BYTE</TD>
+          <TD>Snapshot type:<BR>&nbsp;&nbsp;&nbsp; 00: .Z80 format<BR>
+            &nbsp;&nbsp;&nbsp; 01: .SNA format<BR></TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x01</TD>
+          <TD align=3D"center">L</TD>
+          <TD align=3D"center">BYTE[3]</TD>
+          <TD>Snapshot length</TD></TR>
+        <TR bgcolor=3D"#c0f0ff">
+          <TD align=3D"center">0x04</TD>
+          <TD align=3D"center">-</TD>
+          <TD align=3D"center">BYTE[L]</TD>
+          <TD>Snapshot itself</TD></TR></TBODY></TABLE><BR><BR>This =
+would enable one=20
+      to snapshot the game at the start and still have all the tape =
+blocks=20
+      (level data, etc.) in the same file. Only .Z80 and .SNA snapshots =
+are=20
+      supported for compatibility reasons!<BR>The emulator should take =
+care of=20
+      that the snapshot is not taken while the actual Tape loading is =
+taking=20
+      place (which doesn't do much sense). And when an emulator =
+encounters the=20
+      snapshot block it should load it and then continue with the next=20
+      block.<BR><BR>
+      <P align=3D"right"><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#DEPRECATED">Return =
+
+      to deprecated ID list</A> - <A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#INDEX">Return=20
+      to index</A></P><BR><BR></TD></TR></TBODY></TABLE><BR>
+<P align=3D"right"><FONT size=3D"+2"><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#INDEX">Return=20
+to index</A></FONT></P><BR><BR><A name=3D"HISTORY"></A> <BR>
+<P>
+<TABLE width=3D"100%" bgcolor=3D"#ffffff" border=3D"0" =
+cellspacing=3D"12" cellpadding=3D"0">
+  <TBODY>
+  <TR>
+    <TD width=3D"10%" align=3D"center" bgcolor=3D"#ff7848"><FONT =
+color=3D"white" size=3D"+2"><B>
+      7. </B></FONT></TD>
+    <TD><FONT size=3D"+2">Revision history =
+</FONT></TD></TR></TBODY></TABLE><BR>
+<TABLE width=3D"100%" border=3D"0">
+  <TBODY>
+  <TR>
+    <TD width=3D"10%"></TD>
+    <TD><STRONG>Revision 1.20</STRONG> <BR>
+      <UL>
+        <LI>The following blocks have been deprecated and should not =
+appear in
+         TZX files v1.20 and above: C64 blocks (ID 16 and ID 17), =
+Emulation Info=20
+        (ID 34), Snapshot block (ID 40). These block IDs are now =
+reserved. All=20
+        Custom info (ID 35) types standardized up to Revision 1.13 are =
+now=20
+        deprecated.</LI>
+        <LI>The following new blocks have been introduced: ID 18, ID 19, =
+ID 2B.=20
+        Newly added blocks follow the general extension rule.</LI>
+        <LI>Added new entries to the hardware ID list: 00/1E-2D, =
+01/12-17,=20
+        02/06-0A, 03/06-0C, 06/03, 0B/03, =
+10/00-03</LI></UL><BR><STRONG>Revision=20
+      1.13</STRONG> <BR>
+      <UL>
+        <LI>The following new blocks have been introduced: ID 16, ID =
+17</LI>
+        <LI>Added new entries to the hardware ID list:=20
+      00/1C,1D</LI></UL><BR><STRONG>Revision 1.12</STRONG> <BR>
+      <UL>
+        <LI>Added the following fields to the 'Archive info' (ID 32) =
+block:=20
+        <UL>
+          <LI>05 - Game/Utility Type</LI>
+          <LI>06 - Price</LI>
+          <LI>07 - Protection Scheme / Loader</LI>
+          <LI>08 - Origin</LI></UL></LI>
+        <LI>Added two new types of 'Custom info' (ID 35) block:=20
+        <UL>
+          <LI>'ZX-Edit document' - for .ZED files generated by the great =
+
+          ZX-Editor!</LI>
+          <LI>'Picture ' - for .GIF and .JPEG (.JPG) =
+pictures</LI></UL></LI>
+        <LI>Added new entries to the hardware ID list:=20
+      00/1A,1B</LI></UL><BR><STRONG>Revision 1.10</STRONG> <BR>
+      <UL>
+        <LI>The following new blocks have been introduced: ID 24, ID 25, =
+ID 26,=20
+        ID 27, ID 28, ID 40</LI>
+        <LI>Allowed multiple lines in the 'Archive info' (ID 32) block. =
+Also=20
+        added the following field:=20
+        <UL>
+          <LI>04 - Language</LI></UL></LI>
+        <LI>First three types of 'Custom info' (ID 35) block =
+standardized:=20
+        <UL>
+          <LI>'POKEs'</LI>
+          <LI>'Instructions'</LI>
+          <LI>'Screen'</LI></UL></LI></UL><BR><STRONG>Revision =
+1.02</STRONG> <BR>
+      <UL>
+        <LI>Added new entries to the hardware ID list:=20
+      00/15-19</LI></UL><BR><STRONG>Revision 1.01</STRONG> <BR>
+      <UL>
+        <LI>The Length of ASCII ID in 'Custom Info' block (ID 35) should =
+be 16=20
+        and not 15 bytes - even Tomaz Kac doesn't remember if it =
+concerns only =20
+        documentation or also the implementation;   to be sure consider =
+the=20
+        block ID 35 as newly added in revision 1.01=20
+</LI></UL><BR></TD></TR></TBODY></TABLE><BR>
+<P align=3D"right"><FONT size=3D"+2"><A =
+href=3D"http://www.worldofspectrum.org/TZXformat.html#INDEX">Return=20
+to index</A></FONT></P><BR><BR>
+<HR>
+
+<P><A href=3D"http://validator.w3.org/check?uri=3Dreferer"><IMG =
+width=3D"88" height=3D"31"=20
+alt=3D"Valid HTML 4.0 Transitional" =
+src=3D"http://www.w3.org/Icons/valid-html40"=20
+border=3D"0"></A> This document has passed W3C HTML 4.0 Validation.=20
+</P></BODY></HTML>
+
+------=_NextPart_000_0000_01D18AC3.96AF6D30
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: base64
+Content-Location: http://www.w3.org/Icons/valid-html40
+
+iVBORw0KGgoAAAANSUhEUgAAAFgAAAAfCAMAAABUFvrSAAAB1FBMVEUAAAAMCQQKCgoRDQYWEQgb
+FQoeGAwUFBQcHBwkHQ4sIxExJxM1KhUjIyMoKCg0MzI7OztCNBpHOBxNPR5OSz9XRSJbSCRjTyds
+VitvWCx1Rzl0XC5+ZDFOTk5ST0tWUk1WVlZcXFxqXUplZWVra2tya2FwcHB7e3sAWpwIX58JYJ8O
+Y6ERZaIVaKQaa6Yebaghb6klcqopdawxea82fbE4frI+grRFhrZMi7pVkb1alL9dlsBkm8NoncRt
+ocZ0pcl8qsyWBAOZAACcCASIIBmdNiegDge3PB6mPiqEaTSJbTaTdTqXeDyffz+6QiG/TCahclPA
+TifBUCjIXy/QbzfWej3Yfj+Rh2ujgUCui0WxjUa0gVi2kUi6lEq/mEyjkmuzn2e7pnLEnE7eikXO
+pFHQplPWq1XarlbesVjjlUrmm03poFDtqVTjtVrmuFzru130w2H5xmL+y2WDg4OXl5eYmJippZ61
+rZisrKy0tLS/v7+Crs6FsNCLtNKQt9SWu9aYvNebvtifwdqjw9uox92ryd6yzeG20OPCwsLMzMzV
+1dXY2NjA1ufG2ujN3+zT4+7d6fL/7Mbn5+fs7Ozl7vXp8fbu9Pj09PTy9/r1+Pv+/v7MzMw6gYg+
+AAAAnHRSTlP/////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////wC/Z18bAAAA
+AWJLR0QAiAUdSAAAAAlwSFlzAAAASAAAAEgARslrPgAAAxlJREFUSMftlvtTElEUxy/lW0qLpKgs
+LcvDCOEzwxHRpZepldOTSktFJSZhub185DjGQKH4KBFmb/9sZ/ey6+IUMGT91HdmD3d3535293vP
+ORcSP3B9+CGLxFl+faOFa+Llhf/g4sCiz0/pnE8M+xQF6QweeNUn0tB08A/APmKi1EK8fqLIQsuI
+kdJBQnx0hJz9DTjicOPs5dZlGZKyWh2oVidj6bdNcbYgZYHD4+NGMjI+i2AySUtzg7fBjsQv0CWD
+o8DVz6R6QgxrNesZcNXw8DHixanHyQzGshKj2UtMOcGsHTYx2mAXYw84k8lVsKfZPDnaXFt+aCcD
+VsTBswp4hFSbLLnBbljC2AERjHbYZlKbPKyvRRcuNmsei2FL1huHS8hYHnACOhnbBUBfN6Ad7VZc
+KZdvSensxdOB6ZCZcnCd1zupAwuClhUt6MJngBbG+sHNdm2wgUtX8aus0IMpzYBRxj3wdUEmc7AT
+P90JHZBAuxOsF6AvhWunB4f9IUpDfhGnBv1hjHNzMiaEY9GP0lJ54oYgKwOOgFNquRIFdxJs+Bg7
+QKfE3hdVebcFLg5OgS0GrpS1fRV65PMNG0TZ12LA9zJctfK60IcY6waeGYy5wJWrV4TFfFwV/AnA
+KmE2AKSU8xi07Qc/I8TPZ4tmgsmnf87dN3wwqnFV8CbANbkE4SpHRcGxw0fpNAeHSg0q2EvODJIh
+HfeWcDOw974Dgr4JOWBFKcFlttKjWNG9yMmXFznYbKpTwSdJkMrZp/9+z2v1fQdOZ3U3FySVEtzC
+ZHOnIjaISI3f8UqTYU0Bew8HNXAlwTQ2aNxHCs8zxbme+9ltM9Yhx0QrZogdrCCXYryiofEIecc9
+rjING8kgN9ZERGqo1jksaPJ4nu/rx9KS8tOPx1af3d4rr+F6Q3nNfGbxKg1yfc3SO6coHSIvfFn9
+YXQPHChia6ojWGxGtCGIbbhkWp9lDzRuMXve9Bg6MTkmZ4j3aSg7fx+q3APfTB9nuAe/S095FO5f
+2P4DgX/2v2Ihrz6+KlxPLqng+gJ0onCdP1ejgH8CA6GahRvm0rgAAAAASUVORK5CYII=
+
+------=_NextPart_000_0000_01D18AC3.96AF6D30--
